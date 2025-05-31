@@ -1,0 +1,80 @@
+---The keys property can be a string or string[] for simple normal-mode mappings, or it can be a LazyKeysSpec table with the following key-value pairs:
+---@class LazyKeysSpec : vim.keymap.set.Opts
+---@field [1] string # lhs
+---@field [2]? string # rhs
+---@field mode? string|string[] # defaults to "n"
+---@field ft? string|string[] # filetype for buffer-local keymaps
+
+---Config table for Lazyvim plugin files
+---@class LazySpec
+---Short plugin url. Will be expanded using
+---config.git.url_format. Can also be a url or dir.
+---@field [1]? string
+---A directory pointing to a local plugin
+---@field dir? string
+---A custom git url where the plugin is hosted
+---@field url? boolean
+---A custom name for the plugin used for the local plugin directory and as the display name
+---@field name? string
+---A list of plugin names or plugin specs that should be loaded when the
+---plugin loads. Dependencies are always lazy-loaded unless specified otherwise.
+---When specifying a name, make sure the plugin spec has been defined somewhere else.
+---@field dependencies? LazySpec
+---When false, or if the function returns false, then this plugin
+---will not be included in the spec
+---@field enabled? boolean|fun():boolean
+---Behaves the same as enabled, but won't uninstall the plugin when the condition is false.
+---Useful to disable some plugins in vscode, or firenvim for example.
+---@field cond? boolean|fun():boolean
+---Only useful for start plugins (lazy=false) to force loading certain plugins first.
+---Default priority is 50. It's recommended to set this to a high number for colorschemes.
+---@field priority? number
+---init functions are always executed during startup. Mostly useful for setting vim.g.* configuration used by Vim plugins startup
+---@field init fun(LazyPlugin)
+---
+---opts should be a table (will be merged with parent specs), return a table (replaces parent specs) or should change a table. The table will be passed to the Plugin.config() function. Setting this value will imply Plugin.config()
+---@field opts table|fun(LazyPlugin, opts:table)
+---
+---config is executed when the plugin loads.The default implementation will automatically run require(MAIN).setup(opts) if opts or config = true is set. Lazy uses several heuristics to determine the plugin's MAIN module automatically based on the plugin's name. (opts is the recommended way to configure plugins).
+---@field config fun(spec:LazySpec, opts:table)|true
+---You can specify the main module to use for config() and opts(), in case it can not be determined automatically. See config()
+---@field main? string
+---build is executed when a plugin is installed or updated. See [Building](https://lazy.folke.io/developers#building) for more information.
+---@field build fun(spec:LazySpec)|string|false|table
+---When true, the plugin will only be loaded when needed. Lazy-loaded plugins are automatically loaded when their Lua modules are required, or when one of the lazy-loading handlers triggers
+---@field lazy? boolean
+---Lazy-load on event. Events can be specified as BufEnter or with a pattern like BufEnter *.lua
+---@field event? string|string[]|fun(self:LazySpec,event:string[]):string|{event:string[]|string,pattern?:string[]|string}
+---Lazy-load on command
+---@field cmd? string|string[]|fun(self:LazySpec,cmd:string[]):string[]
+---Lazy-load on filetype
+---@field ft? string|string[]|fun(self:LazySpec,ft:string[]):string[]
+---Lazy-load on [key mapping](https://lazy.folke.io/spec/lazy_loading#%EF%B8%8F-lazy-key-mappings)
+---@field keys? string|string[]|LazyKeysSpec|fun(self:LazySpec,keys:string[]):(string|LazyKeysSpec)[]
+---Branch of the repository
+---@field branch? string
+---Tag of the repository
+---@field tag? string
+---Commit of the repository
+---@field commit? string
+---Version to use from the repository. Full Semver ranges are supported
+---@field version? string|false
+---When true, this plugin will not be included in updates
+---@field pin? boolean
+---When false, git submodules will not be fetched. Defaults to true
+---@field submodules? boolean
+---
+---When a spec is tagged optional, it will only be included in the final spec, when the same plugin has been specified at least once somewhere else without optional. This is mainly useful for Neovim distros, to allow setting options on plugins that may/may not be part of the user's plugins.
+---@field optional? boolean
+---
+---A list of plugin specs defined in the scope of the plugin. This is mainly useful for Neovim distros, to allow setting options on plugins that may/may not be part of the user's plugins. When the plugin is disabled, none of the scoped specs will be included in the final spec. Similar to dependencies without the automatic loading of the specs.
+---@field specs LazySpec
+---Do not automatically load this Lua module when it's required somewhere
+---@field module? false
+---Import the given spec module.
+---@field import? string
+
+---@type LazySpec
+local hello = {
+  keys = {},
+}
