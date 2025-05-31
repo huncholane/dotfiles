@@ -76,3 +76,5 @@ vim.keymap.set("i", "<C-L>", "<Esc><C-W>l", { desc = "Go right window" })
 
 -- Load snippets
 require("luasnip.loaders.from_lua").lazy_load({ paths = { "~/.config/nvim/lua/snippets" } })
+
+vim.keymap.set({ "i", "n" }, "<F1>", "<Nop>", { silent = true })
