@@ -39,3 +39,12 @@ vim.cmd("set norelativenumber")
 
 -- add suggested options for autosession
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+  callback = function(args)
+    local bufname = vim.api.nvim_buf_get_name(args.buf)
+    if bufname:match("site%-packages") then
+      vim.diagnostic.enabel(false, { bufnr = args.buf })
+    end
+  end,
+})

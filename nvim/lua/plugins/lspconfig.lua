@@ -1,3 +1,4 @@
+require("lazy.types")
 ---@type LazySpec
 return {
   {
@@ -7,13 +8,6 @@ return {
         underline = true,
       },
       servers = {
-        lua_ls = {
-          workspace = {
-            library = {
-              vim.fn.stdpath("data") .. "/lazy/LazyVim/lua/lazyvim/types.lua",
-            },
-          },
-        },
         basedpyright = {
           enabled = true,
           settings = {
@@ -24,6 +18,7 @@ return {
                 exclude = { "**/__pycache__", "**/node_modules", "**/venv", "**/.mypycache", "**/site-packages" },
                 ignore = { "**/site-packages/**" },
                 logLevel = "Error",
+                useLibraryCodeForTypes = false,
               },
             },
             python = {},
