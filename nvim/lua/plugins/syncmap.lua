@@ -3,7 +3,7 @@ if false then
   require("lazy.types")
 end
 
-local use_dev = false
+local use_dev = true
 
 ---@type SyncmapOpts
 local opts = {
