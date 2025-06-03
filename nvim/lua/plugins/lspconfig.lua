@@ -1,4 +1,7 @@
-require("lazy.types")
+if false then
+  require("lazy.types")
+  require("lspconfig")
+end
 ---@type LazySpec
 return {
   {
@@ -18,7 +21,6 @@ return {
                 exclude = { "**/__pycache__", "**/node_modules", "**/venv", "**/.mypycache", "**/site-packages" },
                 ignore = { "**/site-packages/**" },
                 logLevel = "Error",
-                useLibraryCodeForTypes = false,
               },
             },
             python = {},
