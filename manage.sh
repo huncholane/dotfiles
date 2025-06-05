@@ -12,6 +12,7 @@ dotfiles=(
 	"pipewire:$HOME/.config/pipewire"
 	"yabai:$HOME/.config/yabai"
 	"skhd:$HOME/.config/skhd"
+	"btop:$HOME/.config/btop"
 	"oh-my-zsh:$HOME/.oh-my-zsh"
 	"zshrc:$HOME/.zshrc"
 )
