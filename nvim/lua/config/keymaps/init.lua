@@ -78,3 +78,5 @@ vim.keymap.set("i", "<C-L>", "<Esc><C-W>l", { desc = "Go right window" })
 require("luasnip.loaders.from_lua").lazy_load({ paths = { "~/.config/nvim/lua/snippets" } })
 
 vim.keymap.set({ "i", "n" }, "<F1>", "<Nop>", { silent = true })
+
+vim.keymap.set("n", "<leader>cx", ":!chmod +x %<cr>", { desc = "Make executable" })
