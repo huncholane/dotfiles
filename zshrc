@@ -101,7 +101,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 alias tm='tmux attach || tmux'
-alias src='clear && source ~/.zshrc'
+alias src='clear && exec'
 
 alias dcu='docker compose build && docker compose down --remove-orphans && docker compose up -d && docker compose logs -f'
 
@@ -149,3 +149,5 @@ source $HOME/.config/broot/launcher/bash/br
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+eval "$(zoxide init zsh)"
