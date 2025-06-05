@@ -13,6 +13,7 @@ dotfiles=(
 	"yabai:$HOME/.config/yabai"
 	"skhd:$HOME/.config/skhd"
 	"btop:$HOME/.config/btop"
+	"broot:$HOME/.config/broot"
 	"oh-my-zsh:$HOME/.oh-my-zsh"
 	"zshrc:$HOME/.zshrc"
 )
