@@ -17,6 +17,7 @@ dotfiles=(
 	"fastfetch:$HOME/.config/fastfetch"
 	"oh-my-zsh:$HOME/.oh-my-zsh"
 	"zshrc:$HOME/.zshrc"
+	"p10k.zsh:$HOME/.p10k.zsh"
 )
 
 # Perform the input function on each path
