@@ -14,6 +14,7 @@ dotfiles=(
 	"skhd:$HOME/.config/skhd"
 	"btop:$HOME/.config/btop"
 	"broot:$HOME/.config/broot"
+	"fastfetch:$HOME/.config/fastfetch"
 	"oh-my-zsh:$HOME/.oh-my-zsh"
 	"zshrc:$HOME/.zshrc"
 )

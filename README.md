@@ -14,6 +14,8 @@ Elite Dotfiles.
 | waybar | Forked from JaKooLit |
 | wezterm | Amazing terminal |
 | yabai | Window tiling for Mac OS |
+| broot | Fuzzy file finder on steriods |
+| btop | Slick process manager |
 
 ## Usage
 
