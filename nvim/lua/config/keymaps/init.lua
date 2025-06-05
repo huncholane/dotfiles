@@ -80,3 +80,7 @@ require("luasnip.loaders.from_lua").lazy_load({ paths = { "~/.config/nvim/lua/sn
 vim.keymap.set({ "i", "n" }, "<F1>", "<Nop>", { silent = true })
 
 vim.keymap.set("n", "<leader>cx", ":!chmod +x %<cr>", { desc = "Make executable" })
+
+vim.keymap.set({ "n", "i" }, "<C-b>", function()
+  vim.cmd("w")
+end, { desc = "Save with tmux prefix" })

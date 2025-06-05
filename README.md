@@ -1,6 +1,6 @@
 # Dotfiles
 
-Amazing dotfiles for nvim, hyprland, and mac os.
+Elite Dotfiles.
 
 | Tool | Description |
 |---|---|
