@@ -81,6 +81,10 @@ link() {
 
 # Backs up current config and replaces existing config with symbolic links
 install() {
+	echo -e "Freezing zshrc to hide pushes in the future\n"
+	# Freezing zshrc
+	git update-index --assume-unchanged oh-my-zsh/zshrc
+
 	backup
 	echo
 	link
