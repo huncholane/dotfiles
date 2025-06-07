@@ -69,7 +69,7 @@ alias py=ipython
 
 
 alias tm='tmux attach || tmux'
-alias src='clear && exec'
+alias src='clear && exec zsh'
 
 alias dcu='docker compose build && docker compose down --remove-orphans && docker compose up -d && docker compose logs -f'
 
