@@ -16,8 +16,8 @@ dotfiles=(
 	"broot:$HOME/.config/broot"
 	"fastfetch:$HOME/.config/fastfetch"
 	"oh-my-zsh:$HOME/.oh-my-zsh"
-	"zshrc:$HOME/.zshrc"
-	"p10k.zsh:$HOME/.p10k.zsh"
+	"oh-my-zsh/zshrc:$HOME/.zshrc"
+	"oh-my-zsh/p10k.zsh:$HOME/.p10k.zsh"
 )
 
 # Perform the input function on each path
@@ -86,6 +86,15 @@ install() {
 	link
 	echo
 	echo "Checking for missing installs"
+	if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]; then
+		git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+	fi
+	if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]; then
+		git clone https://github.com/zsh-users/zsh-syntax-highlighting "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+	fi
+	if [ ! -d ~/.oh-my-zsh/custom/themes/powerlevel10k ]; then
+		git clone https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+	fi
 	if ! which go >/dev/null 2>&1; then echo "Please install golang"; fi
 	if ! which rustup >/dev/null 2>&1; then echo "Please install rust"; fi
 	if ! which nvm >/dev/null 2>&1; then echo "Please install nvm"; fi
@@ -98,15 +107,7 @@ install() {
 	if ! which lazygit >/dev/null 2>&1; then echo "Please install lazygit"; fi
 	if ! which btop >/dev/null 2>&1; then echo "Please install btop"; fi
 	if ! which fastfetch >/dev/null 2>&1; then echo "Please install fastfetch"; fi
-	if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]; then
-		git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
-	fi
-	if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]; then
-		git clone https://github.com/zsh-users/zsh-syntax-highlighting "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
-	fi
-	if [ ! -d ~/.oh-my-zsh/custom/themes/powerlevel10k ]; then
-		git clone https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
-	fi
+	if ! which zsh >/dev/null 2>&1; then echo "Please install zsh"; fi
 }
 
 # dispatch based on first argument
