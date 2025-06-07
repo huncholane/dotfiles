@@ -21,7 +21,7 @@ Elite Dotfiles.
 
 ### Install
 
-Backs up original files into ./backup/ which is gitignored, deletes original config files, then creates symlinks to the dotfiles folder.
+Freezes oh-my-zsh/zshrc to allow automatic installs without effecting repo, then backs up original files into ./backup/ which is gitignored, deletes original config files, then creates symlinks to the dotfiles folder.
 
 ```bash
 git clone https://github.com/huncholane/dotfiles ~/.dotfiles
