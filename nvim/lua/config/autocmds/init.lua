@@ -91,3 +91,10 @@ vim.api.nvim_create_user_command("SetTabs", function(opts)
     vim.notify("Invalid number", vim.log.levels.ERROR)
   end
 end, { desc = "Set tab width for current buffer.", nargs = 1 })
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { ".env", ".env.*", "*.env" },
+  callback = function()
+    vim.diagnostic.enable(false)
+  end,
+})
