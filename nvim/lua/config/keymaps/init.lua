@@ -84,3 +84,8 @@ vim.keymap.set("n", "<leader>cx", ":!chmod +x %<cr>", { desc = "Make executable"
 vim.keymap.set({ "n", "i" }, "<C-b>", function()
   vim.cmd("w")
 end, { desc = "Save with tmux prefix" })
+
+-- Toggle marked final in git
+vim.keymap.set("n", "<leader>gf", "", { desc = "Final" })
+vim.keymap.set("n", "<leader>gfm", ":!git update-index --assume-unchanged %<cr>", { desc = "Mark final" })
+vim.keymap.set("n", "<leader>gfu", ":!git update-index --no-assume-unchanged %<cr>", { desc = "Unmark final" })
