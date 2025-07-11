@@ -33,6 +33,9 @@ return {
           end
 
           if has_leetcode then
+            vim.bo.omnifunc = ""
+            vim.bo.formatexpr = ""
+            vim.diagnostic.enable(false)
             wipe_leader_keys("l")
             vim.api.nvim_set_keymap("n", "<leader>l", "", { desc = "LeetCode" })
             vim.api.nvim_set_keymap("n", "<leader>ls", "<cmd>Leet submit<cr>", { desc = "Submit" })

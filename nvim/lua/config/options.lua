@@ -13,13 +13,13 @@ if vim.fn.getenv("WAYLAND_DISPLAY") ~= vim.NIL then
   -- vim.notify("Wayland detected")
 
   vim.g.clipboard = {
-    name = "wl-clipboard",
+    name = "xclip",
     copy = {
-      ["+"] = "wl-copy --foreground --type text/plain",
-      ["*"] = "wl-copy --foreground --primary --type text/plain",
+      ["+"] = "xclip -selection clipboard",
+      ["*"] = "xclip -selection primary",
     },
     paste = {
-      ["+"] = "wl-paste --no-newline",
+      ["+"] = "xclip -selection clipboard -o",
       ["*"] = "xclip -selection primary -o",
     },
     cache_enabled = 1,
