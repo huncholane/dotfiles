@@ -98,3 +98,11 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.diagnostic.enable(false, { bufnr = args.buf })
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "rust",
+  callback = function()
+    local npairs = require("mini.pairs")
+    npairs.unmap("i", "'", "'")
+  end,
+})
