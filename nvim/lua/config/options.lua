@@ -8,11 +8,8 @@ vim.g.ai_cmp = false
 -- disable swap files, not needed with autosession
 vim.opt.swapfile = false
 
--- wayland settings
-if vim.fn.getenv("WAYLAND_DISPLAY") ~= vim.NIL then
-  -- vim.notify("Wayland detected")
-
-  vim.g.clipboard = {
+local clipboards = {
+  xclip = {
     name = "xclip",
     copy = {
       ["+"] = "xclip -selection clipboard",
@@ -23,7 +20,20 @@ if vim.fn.getenv("WAYLAND_DISPLAY") ~= vim.NIL then
       ["*"] = "xclip -selection primary -o",
     },
     cache_enabled = 1,
-  }
+  },
+  wayland = {
+    name = "wl-clipboard",
+    copy = { ["+"] = "wl-copy", ["*"] = "wl-copy" },
+    paste = {
+      ["+"] = "wl-paste --no-newline",
+      ["*"] = "wl-paste --no-newline",
+    },
+    cache_enabled = 1,
+  },
+}
+-- wayland settings
+if vim.fn.getenv("WAYLAND_DISPLAY") ~= vim.NIL then
+  vim.g.clipboard = clipboards.wayland
 end
 
 -- disable animations
