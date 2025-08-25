@@ -21,3 +21,5 @@ if vim.fn.getenv("WAYLAND_DISPLAY") ~= vim.NIL then
   }
 end
 vim.o.clipboard = "unnamedplus"
+
+vim.o.foldmethod = "syntax"

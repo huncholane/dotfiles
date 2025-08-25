@@ -89,3 +89,6 @@ end, { desc = "Save with tmux prefix" })
 vim.keymap.set("n", "<leader>gf", "", { desc = "Final" })
 vim.keymap.set("n", "<leader>gfm", ":!git update-index --assume-unchanged %<cr>", { desc = "Mark final" })
 vim.keymap.set("n", "<leader>gfu", ":!git update-index --no-assume-unchanged %<cr>", { desc = "Unmark final" })
+
+--restart rust analyzer
+vim.keymap.set("n", "<leader>cg", ":RustAnalyzer restart<cr>", { desc = "Restart Rust Analyzer" })
