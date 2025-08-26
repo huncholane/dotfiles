@@ -53,7 +53,7 @@ return {
       "\titem: proc_macro::TokenStream,",
       ") -> proc_macro::TokenStream {",
       "\tlet ast = syn::parse_macro_input!(item as syn::ItemStruct);",
-      "\tquote::quote! {}",
+      "\tquote::quote! {}.into()",
       "}",
     }),
   }),
