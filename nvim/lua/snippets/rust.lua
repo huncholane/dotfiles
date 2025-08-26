@@ -107,7 +107,7 @@ return {
       "#[proc_macro_derive(",
     }),
     i(1, "MyDerive"),
-    t({ ")]", "pub fn derive" }),
+    t({ ")]", "pub fn derive_" }),
     i(2, "import"),
     t({
       "(item: proc_macro::TokenStream) -> proc_macro::TokenStream {",
