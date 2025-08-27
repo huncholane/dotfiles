@@ -92,13 +92,6 @@ vim.api.nvim_create_user_command("SetTabs", function(opts)
   end
 end, { desc = "Set tab width for current buffer.", nargs = 1 })
 
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = { ".env", ".env.*", "*.env" },
-  callback = function(args)
-    vim.diagnostic.enable(false, { bufnr = args.buf })
-  end,
-})
-
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "rust",
   callback = function()
