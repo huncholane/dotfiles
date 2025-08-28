@@ -23,6 +23,7 @@ return {
       lang = "python3",
     },
     config = function(_, opts)
+      vim.api.nvim_create_user_command("LC", "%bd|enew|Leet", {})
       vim.api.nvim_create_autocmd("BufEnter", {
         callback = function()
           local has_leetcode = false
