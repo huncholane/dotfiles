@@ -3,6 +3,7 @@ return {
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
+    enabled = false,
     build = ":Copilot auth",
     event = "BufReadPost",
     opts = {
@@ -28,6 +29,7 @@ return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "main",
+    enabled = false,
     cmd = "CopilotChat",
     opts = function()
       local user = vim.env.USER or "User"
