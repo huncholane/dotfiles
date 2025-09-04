@@ -1,0 +1,8 @@
+[window]
+opacity = 0.9
+blur = true
+option_as_alt = "Both"
+
+[font]
+size = 15
+normal.family = "Iosevka Nerd Font"
