@@ -1,0 +1,32 @@
+require("utils.plugin").install({ src = "https://github.com/folke/which-key.nvim" })
+
+-- vim.keymap.add("n", "<Leader>q", 
+-- vim.wk.add({
+-- 	{ "<leader>w", proxy = "<c-w>", group = "windows" }, -- proxy to window mappings
+-- 	{
+-- 		"<leader>b",
+-- 		group = "buffers",
+-- 		expand = function()
+-- 			return require("which-key.extras").expand.buf()
+-- 		end,
+-- 	},
+-- 	{ "<leader>bb", ":b#<cr>", desc = "Last Buffer" },
+-- 	{
+-- 		"<C-s>",
+-- 		function()
+-- 			vim.cmd("write")
+-- 		end,
+-- 		desc = "Save",
+-- 		mode = { "n", "i" },
+-- 	},
+--
+-- 	{
+-- 		"<leader>q",
+-- 		function()
+-- 			require("utils.buffer").clear_nameless()
+-- 			vim.cmd("wqa")
+-- 		end,
+-- 		desc = "Quit",
+-- 		mode = "n",
+-- 	},
+-- })

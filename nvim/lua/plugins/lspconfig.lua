@@ -1,51 +1,16 @@
-if false then
-  require("lazy.types")
-  require("lspconfig")
-end
----@type LazySpec
-return {
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      diagnostics = {
-        underline = true,
-      },
-      servers = {
-        basedpyright = {
-          enabled = true,
-          settings = {
-            basedpyright = {
-              analysis = {
-                typeCheckingMode = "basic",
-                diagnosticMode = "workspace",
-                exclude = { "**/__pycache__", "**/node_modules", "**/venv", "**/.mypycache", "**/site-packages" },
-                ignore = { "**/site-packages/**" },
-                logLevel = "Error",
-              },
-            },
-            python = {},
-          },
-        },
-        pyright = {
-          enabled = false,
-          settings = {
-            python = {
-              analysis = {},
-            },
-          },
-        },
-        sourcekit = {
-          enabled = true,
-          cmd = { "sourcekit-lsp" },
-          filetypes = { "swift" },
-        },
-      },
-      inlay_hints = {
-        enabled = false,
-      },
-    },
-  },
-  {
-    "nvimtools/none-ls.nvim",
-  },
-}
+require("utils.plugin").install({ src = "https://github.com/neovim/nvim-lspconfig" })
+vim.lsp.enable("pyright")
+vim.lsp.config("lua_ls", {
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" }, -- stop "undefined global 'vim'"
+			},
+			workspace = {
+				library = vim.api.nvim_get_runtime_file("", true),
+				checkThirdParty = false,
+			},
+		},
+	},
+})
+vim.lsp.enable("lua_ls")

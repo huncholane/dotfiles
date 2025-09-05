@@ -1,0 +1,14 @@
+local M = {}
+
+function M.set_tabs(tabs)
+	vim.opt.shiftwidth = tabs
+	vim.opt.tabstop = tabs
+	vim.opt.softtabstop = tabs
+end
+
+function M.safe_exit()
+	require("utils.buffer").clear_nameless()
+	vim.cmd("wq")
+end
+
+return M

@@ -1,14 +1,11 @@
-local function has_flag(flag)
-  for _, arg in ipairs(vim.v.argv) do
-    if arg == flag then
-      return true
-    end
-  end
-  return false
-end
+vim.o.number = true
+vim.opt.expandtab = true
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
+require("utils.general").set_tabs(4)
+require("clipboard")
 
-if has_flag("-R") then
-  require("config.vr")
-else
-  require("config.lazy")
-end
+require("plugins.zzz")
+require("filetypes.zzz")
+require("autocmds")
+require("keymaps")
