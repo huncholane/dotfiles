@@ -36,28 +36,104 @@ local function run_async(cmd, on_exit)
 	})
 end
 
-M.install = function(settings)
-	local name = settings.name or stem(settings.src)
+M.install = function(src)
+	local name = stem(src)
 	local target = install_dir .. "/" .. name
+	local git_repo = "https://github.com/" .. src
 
-	-- GitHub source
-	if settings.src:match("github.com") then
-		if vim.fn.isdirectory(target) == 0 then
-			vim.notify("Installing " .. name .. " from GitHub", vim.log.levels.INFO)
-			vim.fn.system({ "git", "clone", settings.src, target })
+	if vim.fn.isdirectory(src) == 0 and vim.fn.isdirectory(target) == 0 then
+		vim.fn.system({ "git", "clone", git_repo, target })
+	elseif vim.fn.isdirectory(src) == 1 then
+		vim.fn.system({ "rsync", "-a", src .. "/", target })
+	end
+
+	return name
+end
+
+M.load_graph = function()
+	local plugin_dir = vim.fn.stdpath("config") .. "/lua/newplugins"
+
+	-- build graph
+	local adj = {}
+	for _, file in ipairs(vim.fn.readdir(plugin_dir)) do
+		if file:sub(-4) == ".lua" then
+			local basename = file:sub(1, -5)
+			local mod = "newplugins." .. basename
+			local ok, plugin = pcall(require, mod)
+			if ok and type(plugin) == "table" then
+				adj[plugin[1] or basename] = {
+					deps = plugin.deps or {},
+					setup = plugin.setup or function() end,
+					src = plugin[1] or nil,
+					key = plugin[1] or basename,
+				}
+			end
 		end
+	end
+	return adj
+end
 
-	-- Local source
-	else
-		if vim.fn.isdirectory(target) == 0 then
-			vim.notify("Installing " .. name .. " from local path", vim.log.levels.INFO)
-			vim.fn.system({ "cp", "-r", settings.src, target })
-		else
-			run_async({ "rsync", "-a", settings.src .. "/", target })
+M.setup = function()
+	local adj = M.load_graph()
+
+	-- build indegrees
+	local indeg = {}
+	for name, node in pairs(adj) do
+		indeg[name] = indeg[name] or 0
+		for _, dep in ipairs(node.deps) do
+			indeg[name] = indeg[name] + 1
+			indeg[dep] = indeg[dep] or 0
 		end
 	end
 
-	vim.cmd("packadd " .. name)
+	-- build 0 q
+	local q = {}
+	for name, deg in pairs(indeg) do
+		if deg == 0 then
+			table.insert(q, name)
+		end
+	end
+
+	-- topsort
+	local order = {}
+	while #q > 0 do
+		local n = table.remove(q, 1)
+		table.insert(order, n)
+		for other, node in pairs(adj) do
+			for _, dep in ipairs(node.deps) do
+				if dep == n then
+					indeg[other] = indeg[other] - 1
+					if indeg[other] == 0 then
+						table.insert(q, other)
+					end
+				end
+			end
+		end
+	end
+
+	-- check errors
+	for _, deg in pairs(indeg) do
+		if deg > 0 then
+			error("Cycle detected in plugin deps")
+		end
+	end
+
+	-- install plugins in correct order
+	for _, key in ipairs(order) do
+		local plugin = adj[key]
+		if plugin then
+			if plugin.src then
+				local ok, name = pcall(M.install, plugin.src)
+				vim.cmd("packadd " .. name)
+			end
+			if plugin.setup then
+				pcall(plugin.setup)
+			end
+		else
+			pcall(M.install, key)
+			vim.cmd("packadd " .. stem(key))
+		end
+	end
 end
 
 return M

@@ -5,7 +5,4 @@ vim.g.maplocalleader = ","
 require("utils.general").set_tabs(4)
 require("clipboard")
 
-require("plugins.zzz")
-require("filetypes.zzz")
-require("autocmds")
-require("keymaps")
+require("setup")
