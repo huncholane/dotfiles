@@ -1,15 +1,18 @@
-require("utils.plugin").install({ src = "https://github.com/mason-org/mason.nvim" })
-local mason = require("mason")
---vim.keymap.set("n", "<leader>m", require("mason.ui").ui.open())
+return {
+	"mason-org/mason.nvim",
+	setup = function()
+		local mason = require("mason")
 
-local config = {
-	ui = {
-		icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗",
-		},
-	},
+		local config = {
+			ui = {
+				icons = {
+					package_installed = "✓",
+					package_pending = "➜",
+					package_uninstalled = "✗",
+				},
+			},
+		}
+
+		mason.setup(config)
+	end,
 }
-
-mason.setup(config)

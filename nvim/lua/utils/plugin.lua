@@ -51,14 +51,14 @@ M.install = function(src)
 end
 
 M.load_graph = function()
-	local plugin_dir = vim.fn.stdpath("config") .. "/lua/newplugins"
+	local plugin_dir = vim.fn.stdpath("config") .. "/lua/plugins"
 
 	-- build graph
 	local adj = {}
 	for _, file in ipairs(vim.fn.readdir(plugin_dir)) do
 		if file:sub(-4) == ".lua" then
 			local basename = file:sub(1, -5)
-			local mod = "newplugins." .. basename
+			local mod = "plugins." .. basename
 			local ok, plugin = pcall(require, mod)
 			if ok and type(plugin) == "table" then
 				adj[plugin[1] or basename] = {

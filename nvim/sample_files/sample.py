@@ -4,3 +4,8 @@ def hello(name: str):
 
 
 hello("Lane")
+print("fuck you")
+print("fuck you")
+print("fuck you")
+print("fuck you")
+print("fuck you")

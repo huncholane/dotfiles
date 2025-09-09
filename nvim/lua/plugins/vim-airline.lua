@@ -1,2 +1,6 @@
-require("utils.plugin").install({ src = "https://github.com/vim-airline/vim-airline" })
-vim.g["airline#extensions#tabline#enabled"] = 1
+return {
+	"vim-airline/vim-airline",
+	setup = function()
+		vim.g["airline#extensions#tabline#enabled"] = 1
+	end,
+}

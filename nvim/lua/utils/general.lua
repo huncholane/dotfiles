@@ -8,7 +8,7 @@ end
 
 function M.safe_exit()
 	require("utils.buffer").clear_nameless()
-	vim.cmd("wq")
+	vim.cmd("wqa!")
 end
 
 return M

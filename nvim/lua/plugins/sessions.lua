@@ -1,4 +1,17 @@
-local sessionfile = vim.fn.stdpath("state") .. "/autosession.vim"
+vim.o.sessionoptions = "curdir,folds,tabpages,winsize,buffers"
+
+-- Unique session
+local function getsessionfile()
+	local cwd = vim.fn.getcwd()
+	local hash = vim.fn.sha256(cwd)
+	local sessiondir = vim.fn.stdpath("data")
+	if vim.fn.isdirectory(sessiondir) then
+		vim.fn.mkdir(sessiondir, "p")
+	end
+	return sessiondir .. "/" .. hash .. ".vim"
+end
+
+local sessionfile = getsessionfile()
 
 -- Save session
 local function save_session()
@@ -16,7 +29,7 @@ local function restore_session()
 end
 
 -- Autocmd: save on write
-vim.api.nvim_create_autocmd("BufWritePost", {
+vim.api.nvim_create_autocmd({ "BufWritePost", "VimLeavePre" }, {
 	callback = save_session,
 })
 

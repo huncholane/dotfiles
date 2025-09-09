@@ -1,2 +1,6 @@
-require("utils.plugin").install({src="https://github.com/nvim-mini/mini.icons"})
-require("mini.icons").setup()
+return {
+	"nvim-mini/mini.icons",
+	setup = function()
+		require("mini.icons").setup()
+	end,
+}

@@ -1,6 +1,8 @@
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 local mason_ui = require("mason.ui")
+local buffer = require("utils.buffer")
+local execute = require("utils.execute")
 
 vim.keymap.set("n", "<leader><Space>", builtin.find_files, { desc = "Find File" })
 
@@ -9,14 +11,26 @@ vim.keymap.set("n", "<leader>m", mason_ui.open, { desc = "Mason UI" })
 vim.keymap.set("n", "<leader>n", ":messages<cr>", { desc = "Notifications" })
 vim.keymap.set("n", "<leader>o", ":Oil<cr>", { desc = "Oil" })
 
+vim.keymap.set("n", "<leader>b", "", { desc = "Buffers" })
+vim.keymap.set("n", "<leader>bb", ":b#<cr>", { desc = "Last Buffer" })
+vim.keymap.set("n", "<leader>bn", ":bn<cr>", { desc = "Next Buffer" })
+vim.keymap.set("n", "<leader>bp", ":bp<cr>", { desc = "Prev Buffer" })
+vim.keymap.set("n", "<leader>bf", builtin.buffers, { desc = "Find Buffer" })
+vim.keymap.set("n", "<leader>bs", buffer.scratch, { desc = "Scratchpad" })
+vim.keymap.set("n", "<leader>bd", ":bd<cr>", { desc = "Delete Buffer" })
+vim.keymap.set("n", "<leader>bo", buffer.delete_other_buffers, { desc = "Delete Others" })
+
+vim.keymap.set("n", "<leader>e", "", { desc = "Executable" })
+vim.keymap.set("n", "<leader>em", execute.mark, { desc = "Mark" })
+vim.keymap.set("n", "<leader>ee", execute.run_marked, { desc = "Run Marked" })
+vim.keymap.set("n", "<leader>ec", function()
+	vim.cmd("terminal python sample_files/sample.py")
+end, { desc = "Run Current" })
+
 vim.keymap.set("n", "<leader>t", builtin.find_files, { desc = "Telescope" })
 vim.keymap.set("n", "<leader>tf", builtin.find_files, { desc = "Find File" })
 vim.keymap.set("n", "<leader>tk", builtin.keymaps, { desc = "Find Keymap" })
-
-vim.keymap.set("n", "<leader>b", "", { desc = "Buffers" })
-vim.keymap.set("n", "<leader>bb", ":b#<cr>", { desc = "Last Buffer" })
-vim.keymap.set("n", "<leader>bf", builtin.buffers, { desc = "Find Buffer" })
-vim.keymap.set("n", "<leader>bs", require("utils.buffer").scratch, { desc = "Scratchpad" })
+vim.keymap.set("n", "<leader>te", telescope.extensions.emoji.emoji, { desc = "Emoji" })
 
 vim.keymap.set("n", "<M-h>", ":bp<cr>", { desc = "Prev Buffer" })
 vim.keymap.set("n", "<M-l>", ":bn<cr>", { desc = "Next Buffer" })
