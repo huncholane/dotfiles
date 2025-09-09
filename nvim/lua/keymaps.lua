@@ -10,6 +10,7 @@ vim.keymap.set("n", "<leader>q", require("utils.general").safe_exit, { desc = "Q
 vim.keymap.set("n", "<leader>m", mason_ui.open, { desc = "Mason UI" })
 vim.keymap.set("n", "<leader>n", ":messages<cr>", { desc = "Notifications" })
 vim.keymap.set("n", "<leader>o", ":Oil<cr>", { desc = "Oil" })
+vim.keymap.set("n", "<leader>r", "grn<cr>", { desc = "Rename" })
 
 vim.keymap.set("n", "<leader>b", "", { desc = "Buffers" })
 vim.keymap.set("n", "<leader>bb", ":b#<cr>", { desc = "Last Buffer" })
@@ -23,9 +24,7 @@ vim.keymap.set("n", "<leader>bo", buffer.delete_other_buffers, { desc = "Delete 
 vim.keymap.set("n", "<leader>e", "", { desc = "Executable" })
 vim.keymap.set("n", "<leader>em", execute.mark, { desc = "Mark" })
 vim.keymap.set("n", "<leader>ee", execute.run_marked, { desc = "Run Marked" })
-vim.keymap.set("n", "<leader>ec", function()
-	vim.cmd("terminal python sample_files/sample.py")
-end, { desc = "Run Current" })
+vim.keymap.set("n", "<leader>ec", execute.run_current, { desc = "Run Current" })
 
 vim.keymap.set("n", "<leader>t", builtin.find_files, { desc = "Telescope" })
 vim.keymap.set("n", "<leader>tf", builtin.find_files, { desc = "Find File" })

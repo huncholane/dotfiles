@@ -14,4 +14,3 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		vim.keymap.set("n", "q", ":bd<cr>", { desc = "Bail", buffer = args.buf, nowait = true })
 	end,
 })
-

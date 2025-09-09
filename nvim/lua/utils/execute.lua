@@ -18,19 +18,21 @@ M.run = function(path, ft)
 	local basename = path:match("([^/]+)$")
 	local stem = basename:match("^(.+)%.") or basename
 	if ft == "python" then
-		vim.cmd("!python " .. relative_path)
+		vim.cmd("terminal python " .. relative_path)
 	elseif ft == "rust" then
-		if path:find("example/") then
-			vim.cmd("!cargo run --example " .. stem)
+		if path:find("examples/") then
+			vim.cmd("terminal cargo run --example " .. stem)
 		elseif M.target.path:find("bin/") then
-			vim.cmd("!cargo run --bin " .. stem)
+			vim.cmd("terminal cargo run --bin " .. stem)
+		elseif M.target.path:find("test/") then
+			vim.cmd("terminal cargo test")
 		else
-			vim.cmd("cargo run")
+			vim.cmd("terminal cargo run")
 		end
 	elseif ft == "lua" then
 		vim.cmd("luafile " .. path)
 	else
-		vim.cmd("!" .. relative_path)
+		vim.cmd("terminal chmod +x " .. relative_path .. "&& " .. relative_path)
 	end
 end
 
