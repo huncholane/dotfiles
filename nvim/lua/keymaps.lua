@@ -10,7 +10,6 @@ vim.keymap.set("n", "<leader>q", require("utils.general").safe_exit, { desc = "Q
 vim.keymap.set("n", "<leader>m", mason_ui.open, { desc = "Mason UI" })
 vim.keymap.set("n", "<leader>n", ":messages<cr>", { desc = "Notifications" })
 vim.keymap.set("n", "<leader>o", ":Oil<cr>", { desc = "Oil" })
-vim.keymap.set("n", "<leader>r", "grn<cr>", { desc = "Rename" })
 
 vim.keymap.set("n", "<leader>b", "", { desc = "Buffers" })
 vim.keymap.set("n", "<leader>bb", ":b#<cr>", { desc = "Last Buffer" })
@@ -20,6 +19,21 @@ vim.keymap.set("n", "<leader>bf", builtin.buffers, { desc = "Find Buffer" })
 vim.keymap.set("n", "<leader>bs", buffer.scratch, { desc = "Scratchpad" })
 vim.keymap.set("n", "<leader>bd", ":bd<cr>", { desc = "Delete Buffer" })
 vim.keymap.set("n", "<leader>bo", buffer.delete_other_buffers, { desc = "Delete Others" })
+vim.keymap.set("n", "<leader>bq", buffer.wipe, { desc = "Remove All" })
+
+vim.keymap.set("n", "<leader>c", "", { desc = "Code" })
+vim.keymap.set("n", "<leader>ca", function()
+	vim.lsp.buf.code_action({})
+end, { desc = "Code Actions" })
+vim.keymap.set("n", "<leader>ci", function()
+	vim.lsp.buf.code_action({
+		apply = true,
+		context = {
+			only = { "source.organizeImports" },
+		},
+	})
+end, { desc = "Clean Imports" })
+vim.keymap.set("n", "<leader>cr", "grn<cr>", { desc = "Rename" })
 
 vim.keymap.set("n", "<leader>e", "", { desc = "Executable" })
 vim.keymap.set("n", "<leader>em", execute.mark, { desc = "Mark" })

@@ -5,7 +5,7 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "black" },
-				rust = { "cargo_fix", "rustfmt" },
+				rust = { "rustfmt" },
 			},
 			formatters = {
 				cargo_fix = {
