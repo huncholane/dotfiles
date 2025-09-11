@@ -4,5 +4,5 @@ blur = true
 option_as_alt = "Both"
 
 [font]
-size = 15
+size = 10
 normal.family = "Iosevka Nerd Font"
