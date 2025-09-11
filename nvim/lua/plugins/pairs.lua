@@ -2,14 +2,14 @@
 return {
 	{
 		"nvim-mini/mini.pairs",
-		enabled = false,
+		enabled = true,
 		config = function()
 			require("mini.pairs").setup()
 		end,
 	},
 	{
 		"windwp/nvim-autopairs",
-		enabled = true,
+		enabled = false,
 		event = "InsertEnter",
 		config = true,
 	},
