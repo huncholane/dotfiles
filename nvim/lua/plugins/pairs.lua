@@ -9,7 +9,7 @@ return {
 	},
 	{
 		"windwp/nvim-autopairs",
-		enabled = false,
+		enabled = true,
 		event = "InsertEnter",
 		config = true,
 	},

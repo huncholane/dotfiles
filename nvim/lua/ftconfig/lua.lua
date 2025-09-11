@@ -6,6 +6,9 @@ for _, plugin in pairs(require("lazy.core.config").plugins) do
 end
 
 vim.lsp.config("lua_ls", {
+    runtime = {
+        version = "LuaJIT"
+    },
 	settings = {
 		Lua = {
 			diagnostics = {
