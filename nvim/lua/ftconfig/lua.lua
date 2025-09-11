@@ -5,7 +5,7 @@ for _, plugin in pairs(require("lazy.core.config").plugins) do
 	table.insert(plugin_paths, plugin.dir .. "/lua")
 end
 
-lspconfig.lua_ls.setup({
+vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
 			diagnostics = {
@@ -13,13 +13,14 @@ lspconfig.lua_ls.setup({
 			},
 			workspace = {
 				library = {
-					unpack(plugin_paths),
+					table.unpack(plugin_paths),
 				},
 				checkThirdParty = false,
-      },
+			},
 		},
 	},
 })
+vim.lsp.enable("lua_ls")
 
 ---@type FTSpec
 return {
