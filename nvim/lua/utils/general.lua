@@ -7,7 +7,7 @@ function M.set_tabs(tabs)
 end
 
 function M.safe_exit()
-	require("utils.buffer").clear_nameless()
+	require("buf-utils").clear_nameless()
 	vim.cmd("wqa!")
 end
 

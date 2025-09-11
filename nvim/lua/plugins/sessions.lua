@@ -1,6 +1,7 @@
+---@type LazySpec
 return {
-	"~/code/nvim-plugins/sessions.nvim",
-	setup = function()
+	dir="~/code/nvim-plugins/sessions.nvim",
+	config = function()
 		require("sessions").setup()
 	end,
 }

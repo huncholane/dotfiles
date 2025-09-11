@@ -1,6 +1,6 @@
 return {
 	"nvim-mini/mini.icons",
-	setup = function()
+	config = function()
 		require("mini.icons").setup()
 	end,
 }

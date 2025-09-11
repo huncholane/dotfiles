@@ -1,21 +1,35 @@
-require("utils.plugin").setup()
-
--- Get the path to your config/filetypes directory
-local base_dir = vim.fn.stdpath("config") .. "/lua/filetypes"
-
--- Enumerate all .lua files inside that folder
-for _, file in ipairs(vim.fn.readdir(base_dir, [[v:val =~ '\.lua$']])) do
-	-- Strip the `.lua` extension
-	local ft = file:gsub("%.lua$", "")
-	-- Create an autocmd for this filetype
-	vim.api.nvim_create_autocmd("FileType", {
-		pattern = ft,
-		group = vim.api.nvim_create_augroup("filetype_autocommands", { clear = false }),
-		callback = function()
-			require("filetypes." .. ft)
-		end,
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=main",
+		lazypath,
 	})
 end
+vim.opt.rtp:prepend(lazypath)
+
+local plugin_dir = vim.fn.stdpath("config") .. "/lua/plugins"
+local function islua(file)
+	if file:match("%.lua$") then
+		return 1
+	end
+	return 0
+end
+local files = vim.fn.readdir(plugin_dir, islua)
+local plugins = {}
+for _, file in ipairs(files) do
+	local mod = "plugins." .. vim.fn.fnamemodify(file, ":t:r")
+	local ok, plugin = pcall(require, mod)
+	if ok then
+		table.insert(plugins, plugin)
+	end
+end
+require("lazy.init").setup({
+	spec = plugins,
+})
 
 require("clipboard")
 require("autocmds")

@@ -40,11 +40,11 @@ M.install = function(src)
 	local name = stem(src)
 	local target = install_dir .. "/" .. name
 	local git_repo = "https://github.com/" .. src
-    src = vim.fn.expand(src)
+	src = vim.fn.expand(src)
 
 	if vim.fn.isdirectory(src) == 0 and vim.fn.isdirectory(target) == 0 then
 		vim.fn.system({ "git", "clone", git_repo, target })
-	elseif vim.fn.isdirectory(src) == 1 then
+	elseif vim.fn.isdirectory(src) == 1 and vim.fn.isdirectory(target) == 0 then
 		vim.fn.system({ "ln", "-s", src, target })
 	end
 

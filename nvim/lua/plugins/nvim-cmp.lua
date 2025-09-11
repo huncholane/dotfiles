@@ -1,6 +1,7 @@
+---@type LazySpec
 return {
-	"nvim-cmp",
-	deps = {
+	"hrsh7th/nvim-cmp",
+	dependencies = {
 		"hrsh7th/nvim-lspconfig",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
@@ -9,7 +10,7 @@ return {
 		"hrsh7th/cmp-vsnip",
 		"hrsh7th/vim-vsnip",
 	},
-	setup = function()
+	config = function()
 		local cmp = require("cmp")
 
 		cmp.setup({

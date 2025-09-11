@@ -1,6 +1,7 @@
+---@type LazySpec
 return {
 	"folke/tokyonight.nvim",
-	setup = function()
+	config = function()
 		vim.cmd([[colorscheme tokyonight-storm]])
 	end,
 }

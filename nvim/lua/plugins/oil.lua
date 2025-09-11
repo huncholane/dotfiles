@@ -1,11 +1,12 @@
+---@type LazySpec
 return {
-	"stevearc/oil.nvim.git",
-	deps = {
+	"stevearc/oil.nvim",
+	dependencies = {
 		"JezerM/oil-lsp-diagnostics.nvim",
 		"refractalize/oil-git-status.nvim",
 		"benomahony/oil-git.nvim",
 	},
-	setup = function()
+	config = function()
 		--- @type oil.setupOpts
 		local setup = {
 			default_file_explorer = true,
