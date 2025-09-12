@@ -19,7 +19,7 @@ return {
 				vim.cmd("w")
 				print("Save required, enter once more")
 			else
-				require("oil.init").select()
+				require("oil").select()
 			end
 		end
 		setup.keymaps = {
