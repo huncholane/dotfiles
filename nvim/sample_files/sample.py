@@ -3,9 +3,4 @@ def hello(name: str):
     print(f"Hello {name}")
 
 
-hello("Lane")
-print("fuck you")
-print("fuck you")
-print("fuck you")
-print("fuck you")
-print("fuck you")
+hello("Huncho from")

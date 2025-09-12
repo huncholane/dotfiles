@@ -5,14 +5,16 @@ local buffer = require("buf-utils.utils")
 local execute = require("execute")
 local scratch = require("scratch")
 
+-- leader bindings
 vim.keymap.set("n", "<leader><Space>", builtin.find_files, { desc = "Find File" })
-
 vim.keymap.set("n", "<leader>q", require("utils.general").safe_exit, { desc = "Quit All" })
 vim.keymap.set("n", "<leader>m", mason_ui.open, { desc = "Mason UI" })
 vim.keymap.set("n", "<leader>n", ":messages<cr>", { desc = "Notifications" })
 vim.keymap.set("n", "<leader>o", ":Oil<cr>", { desc = "Oil" })
 vim.keymap.set("n", "<leader>,", builtin.buffers, { desc = "Search Buffers" })
+vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "Search Buffers" })
 
+-- buffer bindings
 vim.keymap.set("n", "<leader>b", "", { desc = "Buffers" })
 vim.keymap.set("n", "<leader>bb", ":b#<cr>", { desc = "Last Buffer" })
 vim.keymap.set("n", "<leader>bn", ":bn<cr>", { desc = "Next Buffer" })
@@ -24,14 +26,17 @@ vim.keymap.set("n", "<leader>bo", buffer.delete_other_buffers, { desc = "Delete 
 vim.keymap.set("n", "<leader>bq", buffer.wipe, { desc = "Remove All" })
 vim.keymap.set("n", "<leader>ba", ":Alpha | BufUtils focus<cr>", { desc = "Alpha" })
 
+-- code bindings
 vim.keymap.set("n", "<leader>c", "", { desc = "Code" })
 vim.keymap.set("n", "<leader>cd", require("plugins.lspconfig").open_float, { desc = "Open Diagnostic" })
 
+-- executable bindings
 vim.keymap.set("n", "<leader>e", "", { desc = "Executable" })
 vim.keymap.set("n", "<leader>em", execute.mark, { desc = "Mark" })
 vim.keymap.set("n", "<leader>ee", execute.run_marked, { desc = "Run Marked" })
 vim.keymap.set("n", "<leader>ec", execute.run_current, { desc = "Run Current" })
 
+-- telescope bindings
 vim.keymap.set("n", "<leader>t", "", { desc = "Telescope" })
 vim.keymap.set("n", "<leader>tt", builtin.builtin, { desc = "Builtin" })
 vim.keymap.set("n", "<leader>tf", builtin.find_files, { desc = "Find File" })
@@ -39,11 +44,18 @@ vim.keymap.set("n", "<leader>tk", builtin.keymaps, { desc = "Find Keymap" })
 vim.keymap.set("n", "<leader>te", telescope.extensions.emoji.emoji, { desc = "Emoji" })
 vim.keymap.set("n", "<leader>ta", builtin.autocommands, { desc = "Autocommands" })
 
-vim.keymap.set("n", "<M-h>", ":bp<cr>", { desc = "Prev Buffer" })
-vim.keymap.set("n", "<M-l>", ":bn<cr>", { desc = "Next Buffer" })
+-- alt bindings
 
+-- control bindings
+vim.keymap.set({ "i", "n" }, "<C-h>", "<C-w>h", { desc = "Window Left" })
+vim.keymap.set({ "i", "n" }, "<C-j>", "<C-w>j", { desc = "Window Down" })
+vim.keymap.set({ "i", "n" }, "<C-k>", "<C-w>k", { desc = "Window Up" })
+vim.keymap.set({ "i", "n" }, "<C-l>", "<C-w>l", { desc = "Window Right" })
 vim.keymap.set({ "i", "n" }, "<C-e>", telescope.extensions.emoji.emoji, { desc = "Emoji" })
+vim.keymap.set({ "i", "n" }, "<C-n>", ":bp<cr>", { desc = "Prev Buffer" })
+vim.keymap.set({ "i", "n" }, "<C-m>", ":bn<cr>", { desc = "Next Buffer" })
 vim.keymap.set("n", "<C-s>", ":w<cr>", { desc = "Save" })
 vim.keymap.set("i", "<C-s>", "<Esc>:w<cr>", { desc = "Save" })
 
+-- cancel bindings
 vim.keymap.set("n", "q:", ":", { desc = "Remove stupid ass command" })

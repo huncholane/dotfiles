@@ -3,10 +3,6 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = { "folke/neodev.nvim" },
 	config = function()
-		require("neodev").setup({})
-		-- vim.lsp.config("rust_analyzer", {})
-		-- vim.lsp.enable("rust_analyzer")
-
 		vim.diagnostic.config({
 			virtual_text = {
 				prefix = "💀", -- could be "■", "▎", "x"

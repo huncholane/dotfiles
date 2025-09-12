@@ -6,3 +6,6 @@ option_as_alt = "Both"
 [font]
 size = 10
 normal.family = "Iosevka Nerd Font"
+
+[keyboard]
+option_as_alt = "Both"
