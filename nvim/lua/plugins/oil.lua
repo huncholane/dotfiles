@@ -41,7 +41,7 @@ return {
 			["g."] = { "actions.toggle_hidden", mode = "n" },
 			["g\\"] = { "actions.toggle_trash", mode = "n" },
 		}
-		require("oil.init").setup(setup)
+		require("oil").setup(setup)
 
 		require("oil-git-status").setup({
 			show_ignored = true, -- show files that match gitignore with !!
