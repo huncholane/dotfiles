@@ -5,6 +5,6 @@ return {
 	"huncholane/ftconfig.nvim",
 	dir = vim.fn.isdirectory(dir) == 1 and dir or nil,
 	config = function()
-		require("ftconfig.init").setup()
+		require("ftconfig").setup()
 	end,
 }

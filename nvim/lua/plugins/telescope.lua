@@ -15,5 +15,6 @@ return {
 				},
 			},
 		})
+		telescope.load_extension("nerdy")
 	end,
 }

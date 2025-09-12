@@ -27,7 +27,7 @@ for _, file in ipairs(files) do
 		table.insert(plugins, plugin)
 	end
 end
-require("lazy.init").setup({
+require("lazy").setup({
 	spec = plugins,
 })
 

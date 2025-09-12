@@ -1,10 +1,9 @@
-local lspconfig = require("lspconfig")
-vim.lsp.config
-lspconfig.pyright.setup()
+vim.lsp.config("pyright", {})
+vim.lsp.setup("pyright")
 
 ---@type FTSpec
 return {
-	-- conform = {
-	-- 	use = { "black" },
-	-- },
+	conform = {
+		use = { "black" },
+	},
 }

@@ -43,8 +43,8 @@ vim.keymap.set("n", "<leader>tf", builtin.find_files, { desc = "Find File" })
 vim.keymap.set("n", "<leader>tk", builtin.keymaps, { desc = "Find Keymap" })
 vim.keymap.set("n", "<leader>te", telescope.extensions.emoji.emoji, { desc = "Emoji" })
 vim.keymap.set("n", "<leader>ta", builtin.autocommands, { desc = "Autocommands" })
-
--- alt bindings
+vim.keymap.set("n", "<leader>to", ":Telescope oil<cr>", { desc = "Oil" })
+vim.keymap.set("n", "<leader>tn", ":Telescope nerdy<cr>", { desc = "Nerd Fonts" })
 
 -- control bindings
 vim.keymap.set({ "i", "n" }, "<C-h>", "<C-w>h", { desc = "Window Left" })
@@ -58,4 +58,4 @@ vim.keymap.set("n", "<C-s>", ":w<cr>", { desc = "Save" })
 vim.keymap.set("i", "<C-s>", "<Esc>:w<cr>", { desc = "Save" })
 
 -- cancel bindings
-vim.keymap.set("n", "q:", ":", { desc = "Remove stupid ass command" })
+-- vim.keymap.set("n", "q:", ":", { desc = "Remove stupid ass command" })
