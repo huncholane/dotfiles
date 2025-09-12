@@ -58,4 +58,4 @@ vim.keymap.set("n", "<C-s>", ":w<cr>", { desc = "Save" })
 vim.keymap.set("i", "<C-s>", "<Esc>:w<cr>", { desc = "Save" })
 
 -- cancel bindings
--- vim.keymap.set("n", "q:", ":", { desc = "Remove stupid ass command" })
+vim.keymap.set("n", "q:", ":", { desc = "Remove stupid ass command" })

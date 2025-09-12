@@ -9,8 +9,9 @@ vim.api.nvim_create_autocmd({ "FocusLost", "WinLeave" }, {
 })
 
 vim.api.nvim_create_autocmd("BufEnter", {
-	filetype = nil,
 	callback = function(args)
-		vim.keymap.set("n", "q", ":bd<cr>", { desc = "Bail", buffer = args.buf, nowait = true })
+		if vim.bo[args.buf].readonly then
+			vim.keymap.set("n", "q", ":q<cr>", { nowait = true, buffer = args.buf })
+		end
 	end,
 })
