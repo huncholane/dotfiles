@@ -8,6 +8,9 @@ vim.api.nvim_create_autocmd({ "FocusLost", "WinLeave" }, {
 	callback = autosave.save,
 })
 
+local qfiletypes = {
+	[""] = true,
+}
 vim.api.nvim_create_autocmd("BufEnter", {
 	callback = function(args)
 		if vim.bo[args.buf].readonly then

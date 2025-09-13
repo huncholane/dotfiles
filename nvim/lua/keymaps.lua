@@ -28,6 +28,7 @@ vim.keymap.set("n", "<leader>ba", ":Alpha | BufUtils focus<cr>", { desc = "Alpha
 
 -- code bindings
 vim.keymap.set("n", "<leader>c", "", { desc = "Code" })
+vim.keymap.set("n", "<leader>cc", ":FT<cr>", { desc = "Config" })
 vim.keymap.set("n", "<leader>cd", require("plugins.lspconfig").open_float, { desc = "Open Diagnostic" })
 
 -- executable bindings
@@ -45,6 +46,7 @@ vim.keymap.set("n", "<leader>te", telescope.extensions.emoji.emoji, { desc = "Em
 vim.keymap.set("n", "<leader>ta", builtin.autocommands, { desc = "Autocommands" })
 vim.keymap.set("n", "<leader>to", ":Telescope oil<cr>", { desc = "Oil" })
 vim.keymap.set("n", "<leader>tn", ":Telescope nerdy<cr>", { desc = "Nerd Fonts" })
+vim.keymap.set("n", "<leader>tc", ":Telescope ftconfig<cr>", { desc = "Filetype Config" })
 
 -- control bindings
 vim.keymap.set({ "i", "n" }, "<C-h>", "<C-w>h", { desc = "Window Left" })

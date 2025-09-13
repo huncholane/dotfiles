@@ -4,7 +4,7 @@ vim.lsp.enable("rust_analyzer")
 ---@type FTSpec
 return {
 	conform = {
-		use = { "rust-analyzer" },
+		use = { "rustfmt" },
 		-- 	formatters = {
 		-- 		cargo_fix = {
 		-- 			command = "cargo",

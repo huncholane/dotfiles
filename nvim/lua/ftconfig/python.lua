@@ -1,5 +1,5 @@
 vim.lsp.config("pyright", {})
-vim.lsp.setup("pyright")
+vim.lsp.enable("pyright")
 
 ---@type FTSpec
 return {

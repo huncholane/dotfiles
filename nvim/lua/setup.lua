@@ -31,6 +31,7 @@ require("lazy").setup({
 	spec = plugins,
 })
 
+vim.opt.swapfile = false
 require("clipboard")
 require("autocmds")
 require("keymaps")
