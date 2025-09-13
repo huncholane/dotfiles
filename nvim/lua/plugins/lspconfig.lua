@@ -5,8 +5,9 @@ return {
 	config = function()
 		vim.diagnostic.config({
 			virtual_text = {
-				prefix = "💀", -- could be "■", "▎", "x"
+				prefix = "", -- could be "■", "▎", "x"
 				spacing = 2,
+				source = true,
 			},
 			signs = true,
 			underline = true,

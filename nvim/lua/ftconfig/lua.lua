@@ -1,3 +1,7 @@
+local library = vim.api.nvim_get_runtime_file("", true)
+for _, file in ipairs(require("lazy").plugins()) do
+	table.insert(library, file.dir)
+end
 vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
@@ -11,11 +15,10 @@ vim.lsp.config("lua_ls", {
 				},
 			},
 			diagnostics = {
-				-- globals = { "vim" },
+				globals = { "vim" },
 			},
 			workspace = {
-				-- add everything from the runtime
-				library = vim.api.nvim_get_runtime_file("", true),
+				library = library,
 				checkThirdParty = false,
 			},
 			telemetry = { enable = false },

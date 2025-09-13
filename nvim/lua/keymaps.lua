@@ -30,6 +30,14 @@ vim.keymap.set("n", "<leader>ba", ":Alpha | BufUtils focus<cr>", { desc = "Alpha
 vim.keymap.set("n", "<leader>c", "", { desc = "Code" })
 vim.keymap.set("n", "<leader>cc", ":FT<cr>", { desc = "Config" })
 vim.keymap.set("n", "<leader>cd", require("plugins.lspconfig").open_float, { desc = "Open Diagnostic" })
+vim.keymap.set("n", "<leader>ca", function()
+	vim.lsp.buf.code_action({
+		range = {
+			start = { 1, 1 },
+			["end"] = { vim.fn.line("$"), 1 },
+		},
+	})
+end, { desc = "All Code Actions" })
 
 -- executable bindings
 vim.keymap.set("n", "<leader>e", "", { desc = "Executable" })
@@ -61,3 +69,4 @@ vim.keymap.set("i", "<C-s>", "<Esc>:w<cr>", { desc = "Save" })
 
 -- cancel bindings
 vim.keymap.set("n", "q:", ":", { desc = "Remove stupid ass command" })
+

@@ -40,6 +40,9 @@ return {
 
 		cmp.setup({
 			formatting = vscode.formatting,
+			experimental = {
+				ghost_text = true,
+			},
 			window = {
 				-- completion = cmp.config.window.bordered(),
 				-- documentation = cmp.config.window.bordered(),
@@ -54,6 +57,7 @@ return {
 			sources = cmp.config.sources({
 				{ name = "path" },
 				{ name = "nvim_lsp" },
+				-- { name = "lsp_signature" },
 				-- { name = "vsnip" }, -- For vsnip users.
 				{ name = "luasnip" }, -- For luasnip users.
 				-- { name = 'ultisnips' }, -- For ultisnips users.

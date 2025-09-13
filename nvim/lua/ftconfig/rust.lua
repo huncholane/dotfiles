@@ -5,12 +5,13 @@ vim.lsp.enable("rust_analyzer")
 return {
 	conform = {
 		use = { "rustfmt" },
-		-- 	formatters = {
-		-- 		cargo_fix = {
-		-- 			command = "cargo",
-		-- 			args = { "fix", "--allow-derty" },
-		-- 			stdin = false,
-		-- 		},
-		-- 	},
+		formatters = {
+			cargo_fix = {
+				meta = { description = "Uses cargo fix", url = "" },
+				command = "cargo",
+				args = { "fix", "--allow-dirty", "--allow-staged" },
+				stdin = false,
+			},
+		},
 	},
 }
