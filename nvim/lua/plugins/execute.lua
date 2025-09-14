@@ -4,6 +4,6 @@ local dir = vim.fn.expand("~/code/nvim-plugins/execute.nvim")
 return {
 	{
 		"huncholane/execute",
-		dir = vim.fn.isdirectory(dir)==1 and dir or nil,
+		dir = vim.fn.isdirectory(dir) == 1 and dir or nil,
 	},
 }

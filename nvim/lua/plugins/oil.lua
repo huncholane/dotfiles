@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
 	"stevearc/oil.nvim",
+	enabled = false,
 	dependencies = {
 		"JezerM/oil-lsp-diagnostics.nvim",
 		"refractalize/oil-git-status.nvim",

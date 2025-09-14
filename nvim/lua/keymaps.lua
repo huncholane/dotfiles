@@ -13,6 +13,7 @@ vim.keymap.set("n", "<leader>n", ":messages<cr>", { desc = "Notifications" })
 vim.keymap.set("n", "<leader>o", ":Oil<cr>", { desc = "Oil" })
 vim.keymap.set("n", "<leader>,", builtin.buffers, { desc = "Search Buffers" })
 vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "Search Buffers" })
+vim.keymap.set("n", "<leader>w", ":Explore<cr>", { desc = "Netrw" })
 
 -- buffer bindings
 vim.keymap.set("n", "<leader>b", "", { desc = "Buffers" })
@@ -49,6 +50,16 @@ vim.keymap.set("n", "<leader>ta", builtin.autocommands, { desc = "Autocommands" 
 vim.keymap.set("n", "<leader>to", ":Telescope oil<cr>", { desc = "Oil" })
 vim.keymap.set("n", "<leader>tn", ":Telescope nerdy<cr>", { desc = "Nerd Fonts" })
 vim.keymap.set("n", "<leader>tc", ":Telescope ftconfig<cr>", { desc = "Filetype Config" })
+vim.keymap.set("n", "<leader>tb", ":Telescope current_buffer_fuzzy_find<cr>", { desc = "Current Buffer" })
+
+-- vim bindings
+vim.keymap.set("n", "<leader>v", "", { desc = "Vim Settings" })
+vim.keymap.set("n", "<leader>va", ":e ~/.config/nvim/lua/autocmds.lua<cr>", { desc = "Autocmds" })
+vim.keymap.set("n", "<leader>vk", ":e ~/.config/nvim/lua/keymaps.lua<cr>", { desc = "Keymaps" })
+vim.keymap.set("n", "<leader>vp", ":e ~/.config/nvim/lua/plugins<cr>", { desc = "Plugins" })
+vim.keymap.set("n", "<leader>vl", ":e ~/.config/nvim/lua<cr>", { desc = "Lua Dir" })
+vim.keymap.set("n", "<leader>vt", ":e ~/.config/nvim/lua/telescope/_extensions/<cr>", { desc = "Telescope Extensions" })
+vim.keymap.set("n", "<leader>vo", ":e ~/.config/nvim/lua/options.lua<cr>", { desc = "Options" })
 
 -- control bindings
 vim.keymap.set({ "i", "n" }, "<C-h>", "<C-w>h", { desc = "Window Left" })
