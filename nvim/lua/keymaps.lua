@@ -47,7 +47,7 @@ vim.keymap.set("n", "<leader>tf", builtin.find_files, { desc = "Find File" })
 vim.keymap.set("n", "<leader>tk", builtin.keymaps, { desc = "Find Keymap" })
 vim.keymap.set("n", "<leader>te", telescope.extensions.emoji.emoji, { desc = "Emoji" })
 vim.keymap.set("n", "<leader>ta", builtin.autocommands, { desc = "Autocommands" })
-vim.keymap.set("n", "<leader>to", ":Telescope oil<cr>", { desc = "Oil" })
+vim.keymap.set("n", "<leader>to", ":Telescope netrw<cr>", { desc = "Oil" })
 vim.keymap.set("n", "<leader>tn", ":Telescope nerdy<cr>", { desc = "Nerd Fonts" })
 vim.keymap.set("n", "<leader>tc", ":Telescope ftconfig<cr>", { desc = "Filetype Config" })
 vim.keymap.set("n", "<leader>tb", ":Telescope current_buffer_fuzzy_find<cr>", { desc = "Current Buffer" })
@@ -71,6 +71,9 @@ vim.keymap.set({ "i", "n" }, "<C-n>", ":bp<cr>", { desc = "Prev Buffer" })
 vim.keymap.set({ "i", "n" }, "<C-m>", ":bn<cr>", { desc = "Next Buffer" })
 vim.keymap.set("n", "<C-s>", ":w<cr>", { desc = "Save" })
 vim.keymap.set("i", "<C-s>", "<Esc>:w<cr>", { desc = "Save" })
+
+-- simple bindings
+vim.keymap.set("n", ",", "`", { desc = "Bookmark" })
 
 -- cancel bindings
 vim.keymap.set("n", "q:", ":", { desc = "Remove stupid ass command" })
