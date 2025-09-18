@@ -1,3 +1,3 @@
 vim.cmd[[
-nnoremap <leader>f %!jq .
+nnoremap <leader>f :%!jq<cr>
 ]]

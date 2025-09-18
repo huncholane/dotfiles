@@ -1,4 +1,6 @@
 tt.*
+Session.vim
+tags
 .tests
 doc/tags
 debug

@@ -11,15 +11,73 @@
 !_TAG_FIELD_DESCRIPTION	typeref	/Type and name of a variable or typedef/
 !_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
 !_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_KIND_DESCRIPTION!JSON	a,array	/arrays/
+!_TAG_KIND_DESCRIPTION!JSON	b,boolean	/booleans/
+!_TAG_KIND_DESCRIPTION!JSON	n,number	/numbers/
+!_TAG_KIND_DESCRIPTION!JSON	o,object	/objects/
+!_TAG_KIND_DESCRIPTION!JSON	s,string	/strings/
+!_TAG_KIND_DESCRIPTION!JSON	z,null	/nulls/
+!_TAG_KIND_DESCRIPTION!JavaScript	C,constant	/constants/
+!_TAG_KIND_DESCRIPTION!JavaScript	G,getter	/getters/
+!_TAG_KIND_DESCRIPTION!JavaScript	M,field	/fields/
+!_TAG_KIND_DESCRIPTION!JavaScript	S,setter	/setters/
+!_TAG_KIND_DESCRIPTION!JavaScript	c,class	/classes/
+!_TAG_KIND_DESCRIPTION!JavaScript	f,function	/functions/
+!_TAG_KIND_DESCRIPTION!JavaScript	g,generator	/generators/
+!_TAG_KIND_DESCRIPTION!JavaScript	m,method	/methods/
+!_TAG_KIND_DESCRIPTION!JavaScript	p,property	/properties/
+!_TAG_KIND_DESCRIPTION!JavaScript	v,variable	/global variables/
 !_TAG_KIND_DESCRIPTION!Lua	f,function	/functions/
+!_TAG_KIND_DESCRIPTION!Vim	C,constant	/constant definitions/
+!_TAG_KIND_DESCRIPTION!Vim	a,augroup	/autocommand groups/
+!_TAG_KIND_DESCRIPTION!Vim	c,command	/user-defined commands/
+!_TAG_KIND_DESCRIPTION!Vim	f,function	/function definitions/
+!_TAG_KIND_DESCRIPTION!Vim	k,class	/vim9script classes/
+!_TAG_KIND_DESCRIPTION!Vim	m,map	/maps/
+!_TAG_KIND_DESCRIPTION!Vim	n,filename	/vimball filename/
+!_TAG_KIND_DESCRIPTION!Vim	v,variable	/variable definitions/
 !_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
 !_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
 !_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
 !_TAG_OUTPUT_VERSION	1.1	/current.age/
+!_TAG_PARSER_VERSION!JSON	0.0	/current.age/
+!_TAG_PARSER_VERSION!JavaScript	1.1	/current.age/
 !_TAG_PARSER_VERSION!Lua	0.0	/current.age/
+!_TAG_PARSER_VERSION!Vim	1.1	/current.age/
 !_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
 !_TAG_PROC_CWD	/home/huncho/.dotfiles/nvim/	//
 !_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	6.2.0	/v6.2.0/
+!_TAG_ROLE_DESCRIPTION!JavaScript!function	foreigndecl	/declared in foreign languages/
+SessionLoad	.session.vim	/^let SessionLoad = 1$/;"	v	line:1
+anonymousFunction7e8d25470100	blah.js	/^function() {$/;"	f	line:1
+branch	lazy-lock.json	/^  "conform.nvim": { "branch": "master", "commit": "b4aab989db276993ea5dcb78872be494ce546521" },$/;"	s	line:2	object:conform.nvim
+branch	lazy-lock.json	/^  "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },$/;"	s	line:3	object:lazy.nvim
+branch	lazy-lock.json	/^  "plenary.nvim": { "branch": "master", "commit": "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },$/;"	s	line:4	object:plenary.nvim
+branch	lazy-lock.json	/^  "telescope.nvim": { "branch": "master", "commit": "b4da76be54691e854d3e0e02c36b0245f945c2c7" }/;"	s	line:5	object:telescope.nvim
+branch	lazy-lock.json	/^  "tokyonight.nvim": { "branch": "main", "commit": "057ef5d260c1931f1dffd0f052c685dcd14100a3" },$/;"	s	line:6	object:tokyonight.nvim
+branch	lazy-lock.json	/^  "vim-dispatch": { "branch": "master", "commit": "a2ff28abdb2d89725192db5b8562977d392a4d3f" },$/;"	s	line:7	object:vim-dispatch
+branch	lazy-lock.json	/^  "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }$/;"	s	line:8	object:which-key.nvim
+commit	lazy-lock.json	/^  "conform.nvim": { "branch": "master", "commit": "b4aab989db276993ea5dcb78872be494ce546521" },$/;"	s	line:2	object:conform.nvim
+commit	lazy-lock.json	/^  "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },$/;"	s	line:3	object:lazy.nvim
+commit	lazy-lock.json	/^  "plenary.nvim": { "branch": "master", "commit": "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },$/;"	s	line:4	object:plenary.nvim
+commit	lazy-lock.json	/^  "telescope.nvim": { "branch": "master", "commit": "b4da76be54691e854d3e0e02c36b0245f945c2c7" }/;"	s	line:5	object:telescope.nvim
+commit	lazy-lock.json	/^  "tokyonight.nvim": { "branch": "main", "commit": "057ef5d260c1931f1dffd0f052c685dcd14100a3" },$/;"	s	line:6	object:tokyonight.nvim
+commit	lazy-lock.json	/^  "vim-dispatch": { "branch": "master", "commit": "a2ff28abdb2d89725192db5b8562977d392a4d3f" },$/;"	s	line:7	object:vim-dispatch
+commit	lazy-lock.json	/^  "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }$/;"	s	line:8	object:which-key.nvim
+conform.nvim	lazy-lock.json	/^  "conform.nvim": { "branch": "master", "commit": "b4aab989db276993ea5dcb78872be494ce546521" },$/;"	o	line:2
+easymap	init.lua	/^local function easymap(mode, lhs, rhs, desc)$/;"	f	line:37
+lazy.nvim	lazy-lock.json	/^  "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },$/;"	o	line:3
+plenary.nvim	lazy-lock.json	/^  "plenary.nvim": { "branch": "master", "commit": "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },$/;"	o	line:4
+s:l	.session.vim	/^let s:l = 14 - ((13 * winheight(0) + 23) \/ 47)$/;"	v	line:32
+s:shortmess_save	.session.vim	/^let s:shortmess_save = &shortmess$/;"	v	line:10
+s:so_save	.session.vim	/^let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1$/;"	v	line:2
+s:sx	.session.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v	line:46
+s:wipebuf	.session.vim	/^  let s:wipebuf = bufnr('%')$/;"	v	line:8
+setup	lua/lazy-bootstrap.lua	/^function M.setup()$/;"	f	line:8	unknown:M
+telescope.nvim	lazy-lock.json	/^  "telescope.nvim": { "branch": "master", "commit": "b4da76be54691e854d3e0e02c36b0245f945c2c7" }/;"	o	line:5
+tokyonight.nvim	lazy-lock.json	/^  "tokyonight.nvim": { "branch": "main", "commit": "057ef5d260c1931f1dffd0f052c685dcd14100a3" },$/;"	o	line:6
+vim-dispatch	lazy-lock.json	/^  "vim-dispatch": { "branch": "master", "commit": "a2ff28abdb2d89725192db5b8562977d392a4d3f" },$/;"	o	line:7
+which-key.nvim	lazy-lock.json	/^  "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }$/;"	o	line:8
