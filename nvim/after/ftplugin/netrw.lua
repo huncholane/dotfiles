@@ -1,1 +1,1 @@
-vim.keymap.set("n", "q", ":bd<cr>", {buffer=true, nowait=true})
+vim.keymap.set("n", "q", ":b#<cr>", {buffer=true, nowait=true})
