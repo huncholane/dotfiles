@@ -84,7 +84,7 @@ if true then
 	easymap("n", "<leader>/", ":Telescope live_grep<cr>", "Live Grep")
 	easymap("n", "<leader>,", ":Telescope buffers<cr>", "Find Buffer")
 	easymap("n", "<leader>o", "mz<cmd>%bd|e#|bd#<cr>'z", "Focus")
-	easymap("n", "<leader>8", ':exe "resize ".float2nr(&lines*0.8)<cr>', "80% Window")
+	easymap("n", "<leader>m", ':exe "resize ".float2nr(&lines*0.8)<cr>', "80% Window")
 	easymap("n", "<leader>s", ":Scratch<cr>", "Scratch")
 
 	--quickfix
@@ -170,8 +170,9 @@ command! Restartqfjobs for j in g:qfjobs | call jobstop(j[0]) | let j[0] = jobst
 
 autocmd InsertLeave,TextChanged,FocusLost * if &modifiable && !&readonly | silent! wall | endif
 silent! !mkdir .nvim -p
-autocmd BufWritePre,VimLeavePre * silent! mks! .nvim/session.vim
-autocmd VimEnter * %bd | silent! source .nvim/session.vim
+let mainroot=getcwd()
+autocmd BufWritePre,VimLeavePre * silent! exe 'mks! '.mainroot.'/.nvim/session.vim'
+autocmd VimEnter * %bd | silent! exe 'source '.mainroot.'/.nvim/session.vim'
 autocmd BufNewFile,BufRead buildspec.y{a,}ml set filetype=aws-yml
 autocmd BufWritePre * silent! lua require("conform").format()
 
