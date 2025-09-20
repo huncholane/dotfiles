@@ -169,8 +169,9 @@ command! Killqfjobs for j in g:qfjobs | call jobstop(j[0]) | endfor | set g:qfjo
 command! Restartqfjobs for j in g:qfjobs | call jobstop(j[0]) | let j[0] = jobstart(j[1]) | endfor
 
 autocmd InsertLeave,TextChanged,FocusLost * if &modifiable && !&readonly | silent! wall | endif
-autocmd BufWritePre,VimLeavePre * silent! mks! .session.vim
-autocmd VimEnter * %bd | silent! source .session.vim
+silent! !mkdir .nvim -p
+autocmd BufWritePre,VimLeavePre * silent! mks! .nvim/session.vim
+autocmd VimEnter * %bd | silent! source .nvim/session.vim
 autocmd BufNewFile,BufRead buildspec.y{a,}ml set filetype=aws-yml
 autocmd BufWritePre * silent! lua require("conform").format()
 
