@@ -88,6 +88,9 @@ if true then
 	easymap("n", "<leader>o", "mz<cmd>%bd|e#|bd#<cr>'z", "Focus")
 	easymap("n", "<leader>m", ':exe "resize ".float2nr(&lines*0.8)<cr>', "80% Window")
 	easymap("n", "<leader>s", ":Scratch<cr>", "Scratch")
+  for i = 1,9 do
+    easymap("n", "<leader>"..i, i.."gt", "Tab "..i)
+  end
 
 	--quickfix
 	easymap("n", "<leader>c", "", "Quick Fix")
