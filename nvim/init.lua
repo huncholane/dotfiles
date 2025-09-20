@@ -74,7 +74,7 @@ if true then
 		vim.keymap.set(mode, lhs, rhs, { desc = desc })
 	end
 	--leader
-	easymap("n", "<leader>k", ":silent! bd!<cr>", "Close Buffer")
+	easymap("n", "<leader>k", ":SafeBD<cr>", "Close Buffer")
 	easymap("n", "<leader>b", ":LastFile<cr>", "Last File")
 	easymap("n", "<leader>e", ":Ex<cr>", "Explore")
 	easymap("n", "<leader>q", ":silent! wa! | silent! qa!<cr>", "Quit")
@@ -88,9 +88,9 @@ if true then
 	easymap("n", "<leader>o", "mz<cmd>%bd|e#|bd#<cr>'z", "Focus")
 	easymap("n", "<leader>m", ':exe "resize ".float2nr(&lines*0.8)<cr>', "80% Window")
 	easymap("n", "<leader>s", ":Scratch<cr>", "Scratch")
-  for i = 1,9 do
-    easymap("n", "<leader>"..i, i.."gt", "Tab "..i)
-  end
+	for i = 1, 9 do
+		easymap("n", "<leader>" .. i, i .. "gt", "Tab " .. i)
+	end
 
 	--quickfix
 	easymap("n", "<leader>c", "", "Quick Fix")
@@ -171,6 +171,7 @@ command! SyntaxFold setlocal foldmethod=syntax
 command! -nargs=* Scratch enew | setlocal buftype=nofile bufhidden=hide noswapfile
 command! -nargs=+ R enew | setlocal buftype=nofile bufhidden=hide noswapfile | silent read !<args>
 command! -nargs=+ LinesOfCode execute '!find ./'.substitute(split(<q-args>)[0], ',', ' ./', '-g').' -name "*.'.substitute(split(<q-args>)[1], ',', '" -o -name "*.', 'g').'" | xargs wc -l'
+command! SafeBD if winnr('$')==1 | echoerr 'Refuse to close last window' | else | silent! bd! | endif
 
 let g:qfjobs=[]
 function! JobHandler(c, d, n) abort
