@@ -46,6 +46,7 @@ require("lazy").setup({
 
 ---options
 vim.cmd([[
+set showtabline=2
 set formatoptions-=cro
 set errorformat^=%m@%f
 set fdo=
