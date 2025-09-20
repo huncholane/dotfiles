@@ -63,6 +63,7 @@ set expandtab
 set ignorecase
 set smartcase
 set foldlevel=99
+set statusline=%f\ [%{getcwd()}]
 ]])
 
 ---keymaps
