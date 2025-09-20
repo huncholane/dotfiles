@@ -2,7 +2,7 @@
 vim.lsp.enable({
 	"luals",
 	"pyright",
-	-- "rust",
+	"rust",
 	"typescript",
 })
 
@@ -12,26 +12,41 @@ require("lazy").setup({
 	{ "nvim-telescope/telescope.nvim" },
 	{ "folke/tokyonight.nvim" },
 	{ "folke/which-key.nvim" },
-	{ "stevearc/conform.nvim" },
-	{ "tpope/vim-dispatch" },
+	{
+		"stevearc/conform.nvim",
+		opts = {
+			formatters_by_ft = {
+				lua = { "stylua" },
+				python = { "isort", "black" },
+				rust = { "rustfmt" },
+				javascript = { "prettier" },
+				toml = { "taplo" },
+				typescriptreact = { "prettier" },
+			},
+		},
+	},
 	{ "nvim-treesitter/nvim-treesitter" },
 	{ "mason-org/mason.nvim", opts = {} },
-})
-
----formatters
-require("conform").setup({
-	formatters_by_ft = {
-		lua = { "stylua" },
-		python = { "isort", "black" },
-		rust = { "rustfmt" },
-		javascript = { "prettier" },
-		toml = { "prettier" },
-		typescriptreact = { "prettier" },
+	{ "nvim-tree/nvim-web-devicons" },
+	{
+		"huncholane/leetcode.nvim",
+		branch = "huncholane",
+		dependencies = { "MunifTanjim/nui.nvim", "tree-sitter/tree-sitter-html" },
+		opts = { allow_bufwipe = true },
 	},
+	{ "windwp/nvim-autopairs", opts = {} },
+	{
+		"saghen/blink.cmp",
+		dependencies = { "rafamadriz/friendly-snippets" },
+		build = "cargo build --release",
+		opts = { cmdline = { enabled = false } },
+	},
+	{ "nvim-mini/mini.ai", opts = {} },
 })
 
 ---options
 vim.cmd([[
+set formatoptions-=cro
 set errorformat^=%m@%f
 set fdo=
 set foldmethod=indent
@@ -56,17 +71,20 @@ if true then
 		vim.keymap.set(mode, lhs, rhs, { desc = desc })
 	end
 	--leader
+	easymap("n", "<leader>k", ":silent! bd!<cr>", "Close Buffer")
 	easymap("n", "<leader>b", ":LastFile<cr>", "Last File")
 	easymap("n", "<leader>e", ":Ex<cr>", "Explore")
 	easymap("n", "<leader>q", ":silent! wa! | silent! qa!<cr>", "Quit")
 	easymap("n", "<leader>;", "q:", "Elite Cmd")
 	easymap("n", "<leader>f", ":Format<cr>", "Format")
 	easymap("n", "<leader>h", ":nohl<cr>", "Remove Highlights")
-	easymap("n", "<leader>s", ":EditCurrentFiletype<cr>", "Filetype Settings")
 	easymap("n", "<leader><Space>", ":Telescope find_files<cr>", "Files")
 	easymap("n", "<leader>l", ":<C-p><cr>", "Last Command")
 	easymap("n", "<leader>/", ":Telescope live_grep<cr>", "Live Grep")
-	easymap("n", "<leader>,", ":Telescope buffers<cr>", "Live Grep")
+	easymap("n", "<leader>,", ":Telescope buffers<cr>", "Find Buffer")
+	easymap("n", "<leader>o", "mz<cmd>%bd|e#|bd#<cr>'z", "Focus")
+	easymap("n", "<leader>8", ':exe "resize ".float2nr(&lines*0.8)<cr>', "80% Window")
+	easymap("n", "<leader>s", ":Scratch<cr>", "Scratch")
 
 	--quickfix
 	easymap("n", "<leader>c", "", "Quick Fix")
@@ -93,11 +111,23 @@ if true then
 	easymap({ "i", "n" }, "<C-k>", "<C-w>k")
 	easymap({ "i", "n" }, "<C-l>", "<C-w>l")
 
-  --extras
+	---gotos
 	easymap("n", "gd", vim.lsp.buf.definition, "Goto Definition")
-	easymap({ "i", "n" }, "<C-s>", require("conform").format, "Format")
-  easymap("n", "<C-;>", "m'A;<esc>`'", "Append Colon")
-  easymap("i", "<C-;>", "<esc>m'A;<esc>`'", "Append Colon")
+	easymap({ "n", "v" }, "gy", '"+y', "System Clipboard Copy")
+	easymap({ "n", "v" }, "gp", '"+p', "System Clipboard Paste")
+	easymap("n", "gs", "<cmd>EditCurrentFiletype<cr>", "Filetype Settings")
+	easymap("n", "gm", "q:?make<cr><cr>", "Last Make")
+	easymap("n", "g;", "m'A;<esc>`'", "Append Colon")
+	easymap("n", "g,", "m'A,<esc>`'", "Append Comma")
+
+	---quickfix
+	easymap("n", "gq", "", "Quickfix")
+	easymap("n", "gql", vim.diagnostic.setqflist, "LSP")
+	easymap("n", "gqn", vim.diagnostic.goto_next, "Next Diagnostic")
+	easymap("n", "gqp", vim.diagnostic.goto_prev, "Prev Diagnostic")
+
+	--extras others
+	easymap({ "i", "n" }, "<C-s>", "<cmd>w<cr>", "Format")
 end
 
 ---commands cmds
@@ -109,7 +139,8 @@ command! Format lua require("conform").format()
 command! TreeSitterFold setlocal foldexpr=v:lua.vim.treesitter.foldexpr() | setlocal foldmethod=expr
 command! IndentFold setlocal foldmethod=indent
 command! SyntaxFold setlocal foldmethod=syntax
-command! -nargs=+ R Dispatch <args>
+command! -nargs=* Scratch enew | setlocal buftype=nofile bufhidden=hide noswapfile
+command! -nargs=+ R enew | setlocal buftype=nofile bufhidden=hide noswapfile | silent read !<args>
 command! -nargs=+ LinesOfCode execute '!find ./'.substitute(split(<q-args>)[0], ',', ' ./', '-g').' -name "*.'.substitute(split(<q-args>)[1], ',', '" -o -name "*.', 'g').'" | xargs wc -l'
 
 let g:qfjobs=[]
@@ -137,12 +168,12 @@ command! Killqfjobs for j in g:qfjobs | call jobstop(j[0]) | endfor | set g:qfjo
 command! Restartqfjobs for j in g:qfjobs | call jobstop(j[0]) | let j[0] = jobstart(j[1]) | endfor
 
 autocmd InsertLeave,TextChanged,FocusLost * if &modifiable && !&readonly | silent! wall | endif
-autocmd BufWritePost * silent! !ctags -R --fields=+ns .
 autocmd BufWritePre,VimLeavePre * silent! mks! .session.vim
 autocmd VimEnter * %bd | silent! source .session.vim
 autocmd BufNewFile,BufRead buildspec.y{a,}ml set filetype=aws-yml
+autocmd BufWritePre * silent! lua require("conform").format()
 
-let g:lastfile=''
+"let g:lastfile=''
 command! LastFile if g:lastfile!='' | execute 'edit '.fnameescape(g:lastfile) | endif
-autocmd BufLeave * if &buftype == '' && filereadable(expand('%')) | let g:lastfile = expand('%:p') | endif
+autocmd BufLeave * if &buftype == '' && filereadable(expand('%')) | let lastfile = expand('%:p') | endif
 ]])
