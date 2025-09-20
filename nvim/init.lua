@@ -65,6 +65,7 @@ set ignorecase
 set smartcase
 set foldlevel=99
 set statusline=%f\ [%{getcwd()}]
+set tabline=%!NumberedTabPages()
 ]])
 
 ---keymaps
@@ -131,6 +132,29 @@ if true then
 	--extras others
 	easymap({ "i", "n" }, "<C-s>", "<cmd>w<cr>", "Format")
 end
+
+---functions
+vim.cmd([[
+function! NumberedTabPages()
+  let s = ''
+  for i in range(tabpagenr('$'))
+    " Get the tab-local cwd for tab (i+1)
+    let l:cwd = fnamemodify(getcwd(-1, i+1), ':t')
+
+    " Highlight current tab
+    if i + 1 == tabpagenr()
+      let s .= '%#TabLineSel#'
+    else
+      let s .= '%#TabLine#'
+    endif
+
+    " Add clickable label: tab number + cwd
+    let s .= '%' . (i+1) . 'T ' . (i+1) . ':' . l:cwd . ' '
+  endfor
+  let s .= '%#TabLineFill#%T'
+  return s
+endfunction
+]])
 
 ---commands cmds
 vim.cmd([[
