@@ -1,6 +1,4 @@
 tt.*
-Session.vim
-tags
 .tests
 doc/tags
 debug
@@ -8,4 +6,3 @@ debug
 foo.*
 *.log
 data
-.session.vim
