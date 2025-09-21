@@ -4,7 +4,8 @@ set makeprg=RUST_BACKTRACE=1\ cargo
 
 "   4: tests::utils::test_pairing
 "             at ./tests/utils.rs:232:5
-set efm=%E%.%#%n:\ %m,%Z%.%#at\ \./%f:%l:%c
+set efm=%E\ %#%n:\ %m,%Z\ %#at\ /%.%#
+set efm+=%E\ %#%n:\ %m,%Z\ %#at\ \./%f:%l:%c
 
 "thread 'time_period::y2023::m11nov_tests::test_2023_Nov_B767_MEM' panicked at tests/utils.rs:232:5:
 "assertion `left == right` failed: Incorrect end at zulu for line 1001 / pairing 137. 
