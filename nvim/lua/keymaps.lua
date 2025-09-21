@@ -13,7 +13,6 @@ easymap("n", "<leader><Space>", ":Telescope find_files<cr>", "Files")
 easymap("n", "<leader>l", ":<C-p><cr>", "Last Command")
 easymap("n", "<leader>/", ":Telescope live_grep<cr>", "Live Grep")
 easymap("n", "<leader>,", ":Telescope buffers<cr>", "Find Buffer")
-easymap("n", "<leader>o", "mz<cmd>%bd|e#|bd#<cr>'z", "Focus")
 easymap("n", "<leader>m", ':exe "resize ".float2nr(&lines*0.8)<cr>', "80% Window")
 easymap("n", "<leader>s", ":Scratch<cr>", "Scratch")
 for i = 1, 9 do
