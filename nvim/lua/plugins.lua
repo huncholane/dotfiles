@@ -1,0 +1,36 @@
+require("lazy-bootstrap")
+require("lazy").setup({
+	{ "nvim-telescope/telescope.nvim" },
+	{ "folke/tokyonight.nvim" },
+	{ "folke/which-key.nvim" },
+	{
+		"stevearc/conform.nvim",
+		opts = {
+			formatters_by_ft = {
+				lua = { "stylua" },
+				python = { "isort", "black" },
+				rust = { "rustfmt" },
+				javascript = { "prettier" },
+				toml = { "taplo" },
+				typescriptreact = { "prettier" },
+			},
+		},
+	},
+	{ "nvim-treesitter/nvim-treesitter" },
+	{ "mason-org/mason.nvim", opts = {} },
+	{ "nvim-tree/nvim-web-devicons" },
+	{
+		"huncholane/leetcode.nvim",
+		branch = "huncholane",
+		dependencies = { "MunifTanjim/nui.nvim", "tree-sitter/tree-sitter-html" },
+		opts = { allow_bufwipe = true },
+	},
+	{ "windwp/nvim-autopairs", opts = {} },
+	{
+		"saghen/blink.cmp",
+		dependencies = { "rafamadriz/friendly-snippets" },
+		build = "cargo build --release",
+		opts = { cmdline = { enabled = false } },
+	},
+	{ "nvim-mini/mini.ai", opts = {} },
+})
