@@ -2,7 +2,14 @@ require("lazy-bootstrap")
 require("lazy").setup({
 	{ "nvim-telescope/telescope.nvim" },
 	{ "folke/tokyonight.nvim" },
-	{ "folke/which-key.nvim" },
+	{
+		"folke/which-key.nvim",
+		config = function()
+			require("which-key").add({
+				{ "<leader>w", proxy = "<c-w>", group = "windows" },
+			})
+		end,
+	},
 	{
 		"stevearc/conform.nvim",
 		opts = {
