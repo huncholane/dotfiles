@@ -24,6 +24,6 @@ set expandtab
 set ignorecase
 set smartcase
 set foldlevel=99
-set statusline=[%{getcwd()}]\ %f:%{nvim_treesitter#statusline(0)}
+set statusline=[%{getcwd()}]\ %f:%{nvim_treesitter#statusline(1000)}
 set tabline=%!NumberedTabPages()
 ]])
