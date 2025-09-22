@@ -43,6 +43,10 @@ easymap({ "i", "n" }, "<C-h>", "<C-w>h")
 easymap({ "i", "n" }, "<C-j>", "<C-w>j")
 easymap({ "i", "n" }, "<C-k>", "<C-w>k")
 easymap({ "i", "n" }, "<C-l>", "<C-w>l")
+for i = 1, 9 do
+	easymap("n", "<leader>w" .. i, ":Resize " .. i .. "0<cr>", "Resize " .. i .. "0%")
+end
+easymap("n", "<leader>w0", ":Resize 100<cr>", "Resize 100%")
 
 ---gotos
 easymap("n", "gd", vim.lsp.buf.definition, "Goto Definition")
