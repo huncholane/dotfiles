@@ -1,5 +1,21 @@
 require("lazy-bootstrap")
 require("lazy").setup({
+	{
+		"nvimtools/none-ls.nvim",
+		config = function()
+			local null_ls = require("null-ls")
+			null_ls.setup({
+				sources = {
+					null_ls.builtins.diagnostics.dotenv_linter.with({
+						filetypes = { "env", "sh" },
+					}),
+					null_ls.builtins.formatting.prettier.with({
+						filetypes = { "sh", "env" },
+					}),
+				},
+			})
+		end,
+	},
 	{ "nvim-telescope/telescope.nvim" },
 	{ "folke/tokyonight.nvim" },
 	{
