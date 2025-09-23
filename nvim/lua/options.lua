@@ -3,6 +3,7 @@ vim.lsp.enable({
 	"pyright",
 	"rust",
 	"typescript",
+	"bashls",
 })
 
 vim.cmd([[
