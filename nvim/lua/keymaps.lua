@@ -66,4 +66,5 @@ easymap("n", "gqn", vim.diagnostic.goto_next, "Next Diagnostic")
 easymap("n", "gqp", vim.diagnostic.goto_prev, "Prev Diagnostic")
 
 --extras others
-easymap({ "i", "n" }, "<C-s>", "<cmd>w<cr>", "Format")
+easymap({ "i", "n" }, "<C-s>", "<cmd>w<cr>", "Save")
+easymap({ "i", "n" }, "<C-p>", vim.diagnostic.open_float, "Open Diagnostic Float")
