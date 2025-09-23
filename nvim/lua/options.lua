@@ -4,6 +4,8 @@ vim.lsp.enable({
 	"rust",
 	"typescript",
 	"bashls",
+	"clangd",
+	"cmake",
 })
 
 vim.cmd([[

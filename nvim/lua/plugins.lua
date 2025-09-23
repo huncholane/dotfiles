@@ -12,6 +12,7 @@ require("lazy").setup({
 					null_ls.builtins.formatting.prettier.with({
 						filetypes = { "sh", "env" },
 					}),
+          null_ls.builtins.diagnostics.checkmake
 				},
 			})
 		end,
