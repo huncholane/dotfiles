@@ -28,6 +28,7 @@ command! -nargs=+ Qfjob call add(g:qfjobs, [jobstart(<q-args>, {'on_stdout':'Job
 command! Killqfjobs for j in g:qfjobs | call jobstop(j[0]) | endfor | set g:qfjobs=[]
 command! Restartqfjobs for j in g:qfjobs | call jobstop(j[0]) | let j[0] = jobstart(j[1]) | endfor
 command! -nargs=1 Resize silent! exe 'resize '.(&lines*<args>/100)
+command! -nargs=1 DotfilesTab tabnew | exe 'tcd ~/.dotfiles/'.<q-args>
 
 autocmd InsertLeave,TextChanged,FocusLost * if &modifiable && !&readonly | silent! wall | endif
 silent! !mkdir .nvim -p
