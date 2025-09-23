@@ -7,7 +7,7 @@ require("lazy").setup({
 			null_ls.setup({
 				sources = {
 					null_ls.builtins.diagnostics.dotenv_linter.with({
-						filetypes = { "env", "sh" },
+						filetypes = { "env" },
 					}),
 					null_ls.builtins.formatting.prettier.with({
 						filetypes = { "sh", "env" },

@@ -3,6 +3,14 @@ vim.api.nvim_create_user_command("ToggleDiagnostics", function(_)
 	vim.diagnostic.enable(not diagnostics_enabled)
 end, { desc = "Toggles Diagnostics" })
 
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = ".env*",
+	callback = function(_)
+		vim.bo.filetype = "env"
+		vim.bo.syntax = "sh"
+	end,
+})
+
 vim.cmd([[
 command! -nargs=+ SetMakePrg execute 'set makeprg='.substitute(<q-args>, ' ', '\\ ', 'g')
 command! ToggleClist if empty(filter(getwininfo(), 'v:val.quickfix')) | copen | else | cclose | endif
