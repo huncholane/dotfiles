@@ -56,6 +56,8 @@ easymap("n", "gs", "<cmd>EditCurrentFiletype<cr>", "Filetype Settings")
 easymap("n", "gm", "q:?make<cr><cr>", "Last Make")
 easymap("n", "g;", "m'A;<esc>`'", "Append Colon")
 easymap("n", "g,", "m'A,<esc>`'", "Append Comma")
+easymap("n", "gl", "", "LSP")
+easymap("n", "glt", ":ToggleDiagnostics<cr>", "Toggle")
 
 ---quickfix
 easymap("n", "gq", "", "Quickfix")
