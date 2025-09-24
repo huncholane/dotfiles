@@ -2,17 +2,22 @@ require("lazy-bootstrap")
 require("lazy").setup({
 	{
 		"nvimtools/none-ls.nvim",
+		dependencies = {
+			{ "huncholane/none-ls-extras.nvim", branch = "mbake" },
+		},
 		config = function()
 			local null_ls = require("null-ls")
+
 			null_ls.setup({
 				sources = {
-					null_ls.builtins.diagnostics.dotenv_linter.with({
+					require("null-ls.builtins.diagnostics.dotenv_linter").with({
 						filetypes = { "env" },
 					}),
-					null_ls.builtins.formatting.prettier.with({
+					require("null-ls.builtins.formatting.prettier").with({
 						filetypes = { "sh", "env" },
 					}),
-          null_ls.builtins.diagnostics.checkmake
+					require("none-ls.formatting.mbake"),
+					require("null-ls.builtins.diagnostics.checkmake"),
 				},
 			})
 		end,
@@ -44,10 +49,9 @@ require("lazy").setup({
 	{ "mason-org/mason.nvim", opts = {} },
 	{ "nvim-tree/nvim-web-devicons" },
 	{
-		"huncholane/leetcode.nvim",
-		branch = "huncholane",
+		"kawre/leetcode.nvim",
 		dependencies = { "MunifTanjim/nui.nvim", "tree-sitter/tree-sitter-html" },
-		opts = { allow_bufwipe = true },
+		opts = {},
 	},
 	{ "windwp/nvim-autopairs", opts = {} },
 	{
