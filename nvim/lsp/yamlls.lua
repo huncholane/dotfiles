@@ -68,7 +68,14 @@ return {
     -- https://github.com/redhat-developer/vscode-redhat-telemetry#how-to-disable-telemetry-reporting
     redhat = { telemetry = { enabled = false } },
     -- formatting disabled by default in yaml-language-server; enable it
-    yaml = { format = { enable = true } },
+    yaml = {
+      format = { enable = true },
+      schemas = {
+        -- aws buildspec schema
+        ["https://gist.githubusercontent.com/dacci/6ccf1b1cdcb93228f574137c05e82491/raw/9e9749dd77658096f7c75199abbb52c6d7cd233b/buildspec.schema.json"] =
+        "buildspec.yml",
+      },
+    },
   },
   on_init = function(client)
     --- https://github.com/neovim/nvim-lspconfig/pull/4016
