@@ -23,6 +23,7 @@ require("lazy").setup({
           require("null-ls.builtins.diagnostics.checkmake"),
           require("null-ls.builtins.formatting.isort"),
           require("none-ls.formatting.taplo"),
+          require("null-ls.builtins.diagnostics.hadolint")
         },
       })
     end,
