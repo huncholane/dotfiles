@@ -7,7 +7,7 @@ vim.lsp.enable({
   "clangd",
   "cmake",
   "taplo",
-  "yaml"
+  "yamlls"
 })
 
 vim.cmd([[

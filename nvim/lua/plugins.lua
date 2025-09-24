@@ -2,12 +2,12 @@ require("lazy-bootstrap")
 require("lazy").setup({
   {
     "nvimtools/none-ls.nvim",
-    -- dependencies = {
-    --   { "nvimtools/none-ls-extras.nvim" },
-    -- },
     dependencies = {
-      { dir = "~/code/contributions/none-ls-extras.nvim" },
+      { "nvimtools/none-ls-extras.nvim" },
     },
+    -- dependencies = {
+    --   { dir = "~/code/contributions/none-ls-extras.nvim" },
+    -- },
     config = function()
       local null_ls = require("null-ls")
 
