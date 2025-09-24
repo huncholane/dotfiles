@@ -1,14 +1,10 @@
-vim.lsp.enable({
-  "luals",
-  "pyright",
-  "rust",
-  "typescript",
-  "bashls",
-  "clangd",
-  "cmake",
-  "taplo",
-  "yamlls"
-})
+local lsplist = {}
+for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath("config") .. "/lsp")) do
+  if file:sub(-4) == ".lua" then
+    table.insert(lsplist, file:sub(1, -5))
+  end
+end
+vim.lsp.enable(lsplist)
 
 vim.cmd([[
 set showtabline=2
