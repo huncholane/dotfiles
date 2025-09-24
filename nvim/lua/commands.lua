@@ -1,6 +1,6 @@
 local diagnostics_enabled = true
 vim.api.nvim_create_user_command("ToggleDiagnostics", function(_)
-	vim.diagnostic.enable(not diagnostics_enabled)
+  vim.diagnostic.enable(not diagnostics_enabled)
 end, { desc = "Toggles Diagnostics" })
 
 vim.cmd([[
@@ -27,7 +27,7 @@ silent! !mkdir .nvim -p
 let mainroot=getcwd()
 autocmd BufWritePre,VimLeavePre * silent! exe 'mks! '.mainroot.'/.nvim/session.vim'
 autocmd VimEnter * %bd | silent! exe 'source '.mainroot.'/.nvim/session.vim'
-autocmd BufWritePre * silent! lua require("conform").format()
+autocmd BufWritePre * silent! lua vim.lsp.buf.format()
 
 "let g:lastfile=''
 command! LastFile if g:lastfile!='' | execute 'edit '.fnameescape(g:lastfile) | endif

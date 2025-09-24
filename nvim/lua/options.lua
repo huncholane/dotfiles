@@ -1,18 +1,19 @@
 vim.lsp.enable({
-	"luals",
-	"pyright",
-	"rust",
-	"typescript",
-	"bashls",
-	"clangd",
-	"cmake",
+  "luals",
+  "pyright",
+  "rust",
+  "typescript",
+  "bashls",
+  "clangd",
+  "cmake",
+  "taplo"
 })
 
 vim.filetype.add({
-	pattern = {
-		[".env*"] = "env",
-		["buildspec.*"] = "aws-yml",
-	},
+  pattern = {
+    [".env*"] = "env",
+    ["buildspec.*"] = "aws-yml",
+  },
 })
 
 vim.cmd([[
