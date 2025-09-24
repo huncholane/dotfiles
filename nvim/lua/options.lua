@@ -9,13 +9,6 @@ vim.lsp.enable({
   "taplo"
 })
 
-vim.filetype.add({
-  pattern = {
-    [".env*"] = "env",
-    ["buildspec.*"] = "aws-yml",
-  },
-})
-
 vim.cmd([[
 set showtabline=2
 set formatoptions-=cro
