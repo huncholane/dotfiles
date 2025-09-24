@@ -4,18 +4,10 @@ vim.api.nvim_create_user_command("ToggleDiagnostics", function(_)
 end, { desc = "Toggles Diagnostics" })
 
 vim.api.nvim_create_autocmd("BufEnter", {
-  pattern=".env*",
-  callback=function (_)
+  pattern = ".env*",
+  callback = function(_)
     vim.bo.filetype = "env"
     vim.bo.syntax = "sh"
-  end
-})
-
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern="buildspec.*",
-  callback=function (_)
-    vim.bo.filetype = "aws-yaml"
-    vim.bo.syntax = "yaml"
   end
 })
 
