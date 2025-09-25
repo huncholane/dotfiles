@@ -38,20 +38,37 @@ require("lazy").setup({
       })
     end,
   },
-  { "nvim-treesitter/nvim-treesitter" },
-  { "mason-org/mason.nvim",           opts = {} },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    branch = 'master',
+    lazy = false,
+    build = ":TSUpdate",
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        ensure_installed = { "c", "lua", "vim", "vimdoc", "json", "python", "rust", "typescript", "markdown" },
+        sync_install = false,
+        auto_install = true,
+        ignore_install = {},
+        modules = {}
+      })
+    end
+  },
+  {
+    "mason-org/mason.nvim",
+    opts = {}
+  },
   { "nvim-tree/nvim-web-devicons" },
   {
     "kawre/leetcode.nvim",
     dependencies = { "MunifTanjim/nui.nvim", "tree-sitter/tree-sitter-html" },
     opts = {},
   },
-  { "windwp/nvim-autopairs", opts = {} },
+  { "windwp/nvim-autopairs",      opts = {} },
   {
     "saghen/blink.cmp",
     dependencies = { "rafamadriz/friendly-snippets" },
     build = "cargo build --release",
     opts = { cmdline = { enabled = false } },
   },
-  { "nvim-mini/mini.ai",     opts = {} },
+  { "nvim-mini/mini.ai", opts = {} },
 })
