@@ -16,6 +16,7 @@ easymap("n", "<leader>,", ":Telescope buffers<cr>", "Find Buffer")
 easymap("n", "<leader>m", ':exe "resize ".float2nr(&lines*0.8)<cr>', "80% Window")
 easymap("n", "<leader>s", ":Scratch<cr>", "Scratch")
 easymap("n", "<leader>g", ":Telescope git_bcommits<cr>", "Buffer Commits")
+easymap("n", "<leader>d", ":Telescope git_status<cr>", "Git Diff")
 for i = 1, 9 do
   easymap("n", "<leader>" .. i, i .. "gt", "Tab " .. i)
 end
