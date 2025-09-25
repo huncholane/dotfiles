@@ -29,6 +29,7 @@ command! Killqfjobs for j in g:qfjobs | call jobstop(j[0]) | endfor | set g:qfjo
 command! Restartqfjobs for j in g:qfjobs | call jobstop(j[0]) | let j[0] = jobstart(j[1]) | endfor
 command! -nargs=1 Resize silent! exe 'resize '.(&lines*<args>/100)
 command! -nargs=1 DotfilesTab tabnew | exe 'tcd ~/.dotfiles/'.<q-args>
+command! -nargs=1 Tab tabnew | exe 'tcd '.<q-args>
 
 autocmd InsertLeave,TextChanged,FocusLost * if &modifiable && !&readonly | silent! wall | endif
 silent! !mkdir .nvim -p
