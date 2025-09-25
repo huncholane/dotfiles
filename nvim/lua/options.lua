@@ -11,7 +11,8 @@ set showtabline=2
 set formatoptions-=cro
 set errorformat^=%m@%f
 set fdo=
-set foldmethod=indent
+set foldmethod=expr
+set foldexpr=v:lua.vim.treesitter.foldexpr()
 set noswapfile
 set sessionoptions+=globals,localoptions,tabpages,winpos,resize,folds
 colorscheme tokyonight-moon
