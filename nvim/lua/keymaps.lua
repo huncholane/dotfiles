@@ -1,5 +1,5 @@
 local function easymap(mode, lhs, rhs, desc)
-	vim.keymap.set(mode, lhs, rhs, { desc = desc })
+  vim.keymap.set(mode, lhs, rhs, { desc = desc })
 end
 --leader
 easymap("n", "<leader>k", ":SafeBD<cr>", "Close Buffer")
@@ -15,8 +15,9 @@ easymap("n", "<leader>/", ":Telescope live_grep<cr>", "Live Grep")
 easymap("n", "<leader>,", ":Telescope buffers<cr>", "Find Buffer")
 easymap("n", "<leader>m", ':exe "resize ".float2nr(&lines*0.8)<cr>', "80% Window")
 easymap("n", "<leader>s", ":Scratch<cr>", "Scratch")
+easymap("n", "<leader>g", ":Telescope git_bcommits<cr>", "Buffer Commits")
 for i = 1, 9 do
-	easymap("n", "<leader>" .. i, i .. "gt", "Tab " .. i)
+  easymap("n", "<leader>" .. i, i .. "gt", "Tab " .. i)
 end
 
 --quickfix
@@ -44,7 +45,7 @@ easymap({ "i", "n" }, "<C-j>", "<C-w>j")
 easymap({ "i", "n" }, "<C-k>", "<C-w>k")
 easymap({ "i", "n" }, "<C-l>", "<C-w>l")
 for i = 1, 9 do
-	easymap("n", "<leader>w" .. i, ":Resize " .. i .. "0<cr>", "Resize " .. i .. "0%")
+  easymap("n", "<leader>w" .. i, ":Resize " .. i .. "0<cr>", "Resize " .. i .. "0%")
 end
 easymap("n", "<leader>w0", ":Resize 100<cr>", "Resize 100%")
 
