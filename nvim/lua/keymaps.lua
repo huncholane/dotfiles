@@ -17,24 +17,7 @@ easymap("n", "<leader>m", ':exe "resize ".float2nr(&lines*0.8)<cr>', "80% Window
 easymap("n", "<leader>s", ":Scratch<cr>", "Scratch")
 easymap("n", "<leader>g", ":Telescope git_bcommits<cr>", "Buffer Commits")
 easymap("n", "<leader>d", ":Telescope git_status<cr>", "Git Diff")
-vim.keymap.set('n', '<leader>.', function()
-  require("telescope.builtin").find_files({
-    hidden = true,
-    no_ignore = true,
-    previewer = false,
-    find_command = { 'rg', '--files', '--hidden', '--no-ignore', '--glob', '!.git/*', '--glob', '!target/*' },
-    attach_mappings = function(b, map)
-      local actions = require "telescope.actions"
-      local action_state = require "telescope.actions.state"
-      map({ "i", "n" }, "<C-o>", function()
-        local selection = action_state.get_selected_entry()
-        vim.cmd("!xdg-open " .. selection.path)
-        actions.close(b)
-      end)
-      return true
-    end
-  })
-end, { desc = 'All Files' })
+easymap("n", "<leader>.", ":Telescope all_files<cr>", "All Files")
 for i = 1, 9 do
   easymap("n", "<leader>" .. i, i .. "gt", "Tab " .. i)
 end
