@@ -23,6 +23,16 @@ vim.keymap.set('n', '<leader>.', function()
     no_ignore = true,
     previewer = false,
     find_command = { 'rg', '--files', '--hidden', '--no-ignore', '--glob', '!.git/*', '--glob', '!target/*' },
+    attach_mappings = function(b, map)
+      local actions = require "telescope.actions"
+      local action_state = require "telescope.actions.state"
+      map({ "i", "n" }, "<C-o>", function()
+        local selection = action_state.get_selected_entry()
+        vim.cmd("!xdg-open " .. selection.path)
+        actions.close(b)
+      end)
+      return true
+    end
   })
 end, { desc = 'All Files' })
 for i = 1, 9 do
