@@ -11,6 +11,23 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end
 })
 
+local last_buf = nil
+vim.api.nvim_create_autocmd("BufLeave", {
+  callback = function(args)
+    local buf = vim.bo[args.buf]
+    if buf.buflisted and vim.api.nvim_buf_is_valid(args.buf) and not buf.readonly then
+      last_buf = args.buf
+    end
+  end,
+})
+vim.api.nvim_create_user_command("LastFile", function()
+  if last_buf and vim.api.nvim_buf_is_valid(last_buf) then
+    vim.api.nvim_set_current_buf(last_buf)
+  else
+    vim.notify("No last buffer recorded", vim.log.levels.WARN)
+  end
+end, {})
+
 vim.cmd([[
 command! -nargs=+ SetMakePrg execute 'set makeprg='.substitute(<q-args>, ' ', '\\ ', 'g')
 command! ToggleClist if empty(filter(getwininfo(), 'v:val.quickfix')) | copen | else | cclose | endif
@@ -37,8 +54,4 @@ let mainroot=getcwd()
 autocmd BufWritePre,VimLeavePre * silent! exe 'mks! '.mainroot.'/.nvim/session.vim'
 autocmd VimEnter * %bd | silent! exe 'source '.mainroot.'/.nvim/session.vim'
 autocmd BufWritePre * silent! lua vim.lsp.buf.format()
-
-"let g:lastfile=''
-command! LastFile if g:lastfile!='' | execute 'edit '.fnameescape(g:lastfile) | endif
-autocmd BufLeave * if &buftype == '' && filereadable(expand('%')) | let lastfile = expand('%:p') | endif
 ]])
