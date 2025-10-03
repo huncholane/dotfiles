@@ -4,7 +4,6 @@ end
 --leader
 easymap("n", "<leader>k", ":SafeBD<cr>", "Close Buffer")
 easymap("n", "<leader>b", ":LastFile<cr>", "Last File")
-easymap("n", "<leader>e", ":Ex<cr>", "Explore")
 easymap("n", "<leader>q", ":silent! wa! | silent! qa!<cr>", "Quit")
 easymap("n", "<leader>;", "q:", "Elite Cmd")
 easymap("n", "<leader>f", ":Format<cr>", "Format")
