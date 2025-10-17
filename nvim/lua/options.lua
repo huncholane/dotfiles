@@ -26,5 +26,5 @@ set smartcase
 set foldlevel=99
 set showtabline=2
 set tabline=%!NumberedTabPages()
-set statusline=[%{getcwd()}]\ %f:%{nvim_treesitter#statusline(1000)}
+"set statusline=[%{getcwd()}]\ %f:%{nvim_treesitter#statusline(1000)}
 ]])
