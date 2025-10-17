@@ -50,8 +50,5 @@ command! -nargs=1 Tab tabnew | exe 'tcd '.<q-args>
 
 autocmd InsertLeave,TextChanged,FocusLost * if &modifiable && !&readonly | silent! wall | endif
 silent! !mkdir .nvim -p
-let mainroot=getcwd()
-autocmd BufWritePre,VimLeavePre * silent! exe 'mks! '.mainroot.'/.nvim/session.vim'
-autocmd VimEnter * %bd | silent! exe 'source '.mainroot.'/.nvim/session.vim'
 autocmd BufWritePre * silent! lua vim.lsp.buf.format()
 ]])

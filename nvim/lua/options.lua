@@ -14,7 +14,6 @@ set fdo=
 set foldmethod=expr
 set foldexpr=v:lua.vim.treesitter.foldexpr()
 set noswapfile
-set sessionoptions+=globals,localoptions,tabpages,winpos,resize,folds
 colorscheme tokyonight-moon
 set undofile
 let mapleader=" "
