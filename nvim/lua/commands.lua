@@ -11,6 +11,33 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end
 })
 
+vim.api.nvim_create_user_command("TabRename", function(opts)
+  vim.t.tabname = opts.args
+  vim.cmd.redrawtabline()
+end, { nargs = 1, complete = "file", desc = "Rename current tab" })
+
+vim.api.nvim_create_user_command("BufClean", function()
+  -- Collect all visible buffers from every tab/window
+  local visible = {}
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    visible[buf] = true
+  end
+
+  local deleted = 0
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf)
+        and not visible[buf]
+        and vim.api.nvim_buf_get_option(buf, "buflisted")
+    then
+      vim.api.nvim_buf_delete(buf, { force = true })
+      deleted = deleted + 1
+    end
+  end
+
+  vim.notify("🧹 Deleted " .. deleted .. " hidden buffers (tabs kept intact)")
+end, { desc = "Delete hidden buffers but keep tab buffers intact" })
+
 local last_buf = nil
 vim.api.nvim_create_autocmd("BufLeave", {
   callback = function(args)

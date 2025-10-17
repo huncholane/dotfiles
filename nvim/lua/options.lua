@@ -7,7 +7,6 @@ end
 vim.lsp.enable(lsplist)
 
 vim.cmd([[
-set showtabline=2
 set formatoptions-=cro
 set errorformat^=%m@%f
 set fdo=
@@ -25,6 +24,7 @@ set expandtab
 set ignorecase
 set smartcase
 set foldlevel=99
+set showtabline=2
+set tabline=%!NumberedTabPages()
 set statusline=[%{getcwd()}]\ %f:%{nvim_treesitter#statusline(1000)}
-"set tabline=%!NumberedTabPages()
 ]])
