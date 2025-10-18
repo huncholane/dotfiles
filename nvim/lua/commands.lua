@@ -3,6 +3,22 @@ vim.api.nvim_create_user_command("ToggleDiagnostics", function(_)
   vim.diagnostic.enable(not diagnostics_enabled)
 end, { desc = "Toggles Diagnostics" })
 
+vim.api.nvim_create_user_command("ScratchFromCurrent", function()
+  -- create new scratch buffer
+  vim.cmd("enew")
+  vim.bo.buftype = "nofile"
+  vim.bo.bufhidden = "hide"
+  vim.bo.swapfile = false
+  vim.bo.buflisted = false
+  -- fill it with the contents of the previous buffer
+  local prev = vim.fn.bufnr("#") -- previous buffer
+  if prev ~= -1 then
+    local lines = vim.api.nvim_buf_get_lines(prev, 0, -1, false)
+    vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+  end
+  vim.notify("📄 Copied current buffer into a scratch buffer")
+end, { desc = "Copy current buffer contents into scratch" })
+
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = ".env*",
   callback = function(_)
