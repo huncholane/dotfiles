@@ -92,6 +92,5 @@ command! -nargs=1 DotfilesTab tabnew | exe 'tcd ~/.dotfiles/'.<q-args>
 command! -nargs=1 Tab tabnew | exe 'tcd '.<q-args>
 
 autocmd InsertLeave,TextChanged,FocusLost * if &modifiable && !&readonly | silent! wall | endif
-silent! !mkdir .nvim -p
 autocmd BufWritePre * silent! lua vim.lsp.buf.format()
 ]])
