@@ -1,11 +1,21 @@
 [window]
 opacity = 0.9
 blur = true
-# option_as_alt = "Both"
 
 [font]
 size = 11
 normal.family = "Iosevka Nerd Font Mono"
 
 [keyboard]
-# option_as_alt = "Both"
+bindings = [
+    { key = "i", mods = "Control", chars = "\u001b[48;5u" },       # C-0
+    { key = "h", mods = "Control|Shift", chars = "\u001b[49;5u" }, # C-1
+    { key = "l", mods = "Control|Shift", chars = "\u001b[50;5u" }, # C-2
+    { key = "k", mods = "Control|Shift", chars = "\u001b[51;5u" }, # C-3
+    { key = "j", mods = "Control|Shift", chars = "\u001b[52;5u" }, # C-4
+    { key = ",", mods = "Control", chars = "\u001b[53;5u" },       # C-5
+    { key = ".", mods = "Control", chars = "\u001b[54;5u" },       # C-6
+    { key = "Key7", mods = "Control", chars = "\u001b[55;5u" },    # C-7
+    { key = "Key8", mods = "Control", chars = "\u001b[56;5u" },    # C-8
+    { key = "Key9", mods = "Control", chars = "\u001b[57;5u" },    # C-9
+]
