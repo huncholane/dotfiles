@@ -154,8 +154,8 @@
 
 "clock#utc": {
 	"interval": 1,
-	"format": " {:%I:%M %p} UTC",
-	"format-alt": " {:%H:%M   %Y, %d %B} UTC",
+	"format": " {:%I:%M %p} UTC",
+	"format-alt": " {:%H:%M   %Y, %d %B} UTC",
 	"timezone": "UTC",
 	"tooltip-format": "UTC Time\n<tt><small>{calendar}</small></tt>",
 	"calendar": {
